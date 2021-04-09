@@ -83,7 +83,7 @@ class PlanningController extends AbstractController
                 ->getQuery()
                 ->getResult();
         
-            dd($plannings);
+         
             
             //Rendu (vue)
             return $this->render('planning/index.html.twig',[
@@ -94,8 +94,7 @@ class PlanningController extends AbstractController
 
         //Rendu (vue)
         return $this->render('planning/index.html.twig',[
-            'formFilter' => $formFilter->createView(),
-            'test'  => $test
+            'formFilter' => $formFilter->createView()
         ]);
     }
  

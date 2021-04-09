@@ -1,0 +1,27 @@
+#mainContent{
+   padding: 20px 10px;
+   min-height: 800px;
+}
+
+/* Ecraser le style */
+header .jumbotron{
+   margin: unset;
+}
+
+header .jumbotron{
+   color: black!important;
+}
+
+.addEntity{
+   display: table;
+   margin: 10px 0 10px auto;
+}
+
+.form_add{
+   max-width: 800px;
+   margin:auto;
+}
+
+.form-control{
+   color:black!important;
+}

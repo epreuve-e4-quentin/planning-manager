@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'un nouvel utilisateur{% endblock %}
+
+{% block body %}
+	<h1>Création d'un nouvel utilisateur</h1>
+
+	{{ form_start(form, {'attr':{'id':'add_user_form', 'class': 'form_add' }, 'method': 'POST', 'action': path('security_registration' )} ) }}
+ 
+      {{ form_row(form.username,{'label' : 'Nom utilisateur' , 'attr': {'placeholder' : 'Nom utilisateur'}}) }}
+      {{ form_row(form.email,{'label' : 'Email utilisateur' , 'attr': {'placeholder' : 'Adresse email'}}) }}
+      {{ form_row(form.password,{'label' : 'Mot de passe' , 'attr': {'placeholder' : 'Votre mot de passe'}}) }}
+      {{ form_row(form.confirm_password,{'label' : 'Confirmation du mot de passe' , 'attr': {'placeholder' : 'Confirmez votre mot de passe'}}) }}
+      
+      <button class="btn btn-primary" type="submit"> Ajouter </button>
+      <a href="{{path('security_list')}}">
+         <button type="button" class="btn btn-link">Retourner à la liste des utilisateurs</button>         
+      </a>   
+
+        
+   {{ form_end(form) }}
+
+
+{% endblock %}

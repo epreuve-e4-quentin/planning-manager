@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		{% block stylesheets %}{% endblock %}
+	
+		<script src="/js/jquery-3.5.1.min.js"></script>
+		<link rel="stylesheet" href="/assets/bootstrap-4.0.0/bootstrap.min.css">
+		<script src="/assets/bootstrap-4.0.0/popper.min.js"></script>
+		<script src="/assets/bootstrap-4.0.0/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="/assets/fontawesome/font-awesome.min.css">      <!-- Css pour les icones avec la librerie Fontawesome -->    
+
+		<link rel="stylesheet" type="text/css" href="/assets/datatables/datatables.min.css"/>
+ 		<script type="text/javascript" src="/assets/datatables/datatables.min.js"></script>
+
+		<link rel="stylesheet" href="/css/flatly.min.css">
+		<link rel="stylesheet" href="/css/main.css">
+		
+
+	</head>
+	<body>
+	<div id="body">
+	
+		{% include '/partials/header.html.twig' %}
+		{% include '/partials/nav.html.twig' %}
+
+		<div id="mainContent"> 
+			{% block body %}{% endblock %}
+			 
+		</div>
+		
+		<div id="modal-area"></div>
+
+		
+		<script src="/js/axios.min.js"></script>
+		<script src="/js/main.js"></script>
+		
+		{% block javascripts %}{% endblock %}
+	</div>
+		</body>
+	</html>

@@ -1,0 +1,17 @@
+{% extends '/modules/form_modal.html.twig' %}
+
+{% block title %} Modification  ({{planning.id}}){% endblock %}
+
+{% block form %} 
+   {{ form_start(form, {'attr':{'id':'edit_planning_form'}, 'method': 'POST', 'action': path('planning_edit', {'id': planning.id} )} ) }}
+   
+   {{ form_end(form) }}
+   <script>$("#popup").modal('show'); //Afficher le modal</script>
+{% endblock %}
+
+
+{% block footer %}       
+    <button type="button" onclick="form_modal_submit()" form="edit_planning_form" class="btn btn-primary">Modifier</button>
+{% endblock %}
+
+{% block idToReload %}planning{% endblock %}

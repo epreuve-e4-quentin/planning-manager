@@ -1,0 +1,32 @@
+{% extends '/modules/form_modal.html.twig' %}
+
+{% block title %} Modification de  {{schedule.name}}{% endblock %}
+
+{% block form %} 
+   {{ form_start(form, {'attr':{'id':'edit_schedule_form', 'class': 'form_add' }, 'method': 'POST', 'action': path('schedule_edit', {'id':schedule.id} )} ) }}
+   
+      {% include '/schedule/form.html.twig' %}  
+   {{ form_end(form) }}
+   <script>$("#popup").modal('show'); //Afficher le modal</script>
+{% endblock %}
+
+
+{% block footer %}   
+   <a href="{{path('schedule')}}">
+         <button type="button" class="btn btn-link">Retourner à la liste des Horaires</button>         
+   </a> 
+   <form method="POST" action="{{ path('schedule_delete', {'id': schedule.id }) }}" id='delete_schedule_form'>
+      <button type="submit" onclick='return confirm("Voulez-vous vraimment le supprimer: {{ schedule.name }}  ")' class="btn btn-danger" >Supprimer</button>
+   </form>
+   
+  <button type="button" onclick="form_modal_submit()" form="edit_schedule_form" class="btn btn-primary">Sauvegarder</button>
+
+{% endblock %}
+
+{% block idToReload %}schedules{% endblock %}
+
+
+
+
+
+

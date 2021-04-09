@@ -1,0 +1,29 @@
+{% extends 'modules/modal.html.twig' %}
+
+{% block title %} {% endblock %}
+
+{% block body %} {% block form %} {% endblock %}  {% endblock %}
+
+
+{% block footer %}{% endblock %}
+
+
+{% block javascripts %} 
+  <script>
+
+      function form_modal_submit() {
+         $("#popup").modal('hide');
+         var form = $("#popup form");
+         var data = form.serialize();
+
+         axios.post(form.attr("action"), data).then(function(response){
+            $("#modal-area").html(response.data.htmlContent); //Récupération et Affichage de la vue édition employé dans le modal
+         });
+            
+      }
+
+  </script>
+{% endblock %} 
+
+
+

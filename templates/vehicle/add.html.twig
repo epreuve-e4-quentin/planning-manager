@@ -1,0 +1,30 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Création nouveau véhicule{% endblock %}
+{% block stylesheets %}
+   <link rel="stylesheet" href="/css/vehicle/add.css"> 
+{% endblock %}
+
+{% block body %}
+    
+   {{ form_start(form, {'attr':{'id':'edit_vehicle_form', 'class': 'form_add' }, 'method': 'POST', 'action': path('vehicle_add' )} ) }}
+ 
+      {{ form_row(form.name) }}
+      {{ form_row(form.immat) }}
+
+      <button class="btn btn-primary" type="submit"> Ajouter </button>
+      <a href="{{path('vehicle')}}">
+         <button type="button" class="btn btn-link">Retourner à la liste des véhicules</button>         
+      </a>    
+   {{ form_end(form) }}
+    
+{% endblock %}
+
+
+
+{% block javascripts %}
+
+   {# <script src="/js/vehicle/add.js"></script> #}
+
+{% endblock %}

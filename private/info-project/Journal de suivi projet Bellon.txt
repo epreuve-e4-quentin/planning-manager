@@ -1,0 +1,35 @@
+le 05/03/2021 
+Création d'une feuille inscription pour ajouter des nouveaux utilisateurs 
+
+src->entity->user.php
+
+
+table base de donnée suppression pour le champ update
+
+Table user ==> last_update_user_id mis à accepter si null 
+
+Le  28/02/2021 
+
+Vehicle 
+
+template->vehicle->index.html.twig
+ajout d'une condition pour ne pas afficher le véhicule par féfaut qui est utilisé pour la création des ligne par défaut de planing 
+
+src->entity->vehicle.php 
+Suppression des références sur la date de création du véhicule car ce champ est directement rempli par la base lors de l'insertion de la ligne 
+Ajout de la vérication d'une longeur minimum et maximum 
+
+Désactivation de l'userid pour le moment dans la base de donnée en attendant la mise en place de l'interface de gestion user
+
+src->controler->vehicle.php 
+
+Modification des noms de méthodes  
+* add ==> addVehicle 
+* edit ==> editVehicle 
+* delete ==> deleteVehicle 
+
+dans le add ajout d'un controle sur le champ immat pour  ne pas créer 2 immatriculations identiques. 
+Dans le edit, il serait souhaitable de rajouter la même vérification mais pas d'idée pour le moment. 
+
+ 
+Bizarre la configuration du datables stockés dans un fichier js n'est pas pris en compte alors que stocker dans le index du template oui 

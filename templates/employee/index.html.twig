@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des employés{% endblock %}
+{% block stylesheets %}
+   <link rel="stylesheet" href="/css/employee/index.css"> 
+   <link rel="stylesheet" href="/css/employee/edit.css"> 
+{% endblock %}
+
+{% block body %}
+
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+   <a class="navbar-brand" href="#"></a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+   </button>
+      <div class="collapse navbar-collapse" id="navbarColor02">
+         <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+               <a  href="{{path('employee_add')}}" class="nav-link"> 
+                  <button type="button" form="add_employee_form" class="btn btn-primary">Ajouter un employé</button>
+               </a>
+            </li>
+         </ul>
+         <p id="extraButton"> </p>
+      </div>
+   </nav>
+   <div>
+      <BR>
+   </div>
+      <table class="table table-striped" id="employees">
+         <thead class="thead-dark">
+            <tr>
+               <th scope="col"> Nom </i></th>
+               <th scope="col"> Prénom </th>
+               <th scope="col"> Adresse </th>
+               <th scope="col"> Téléphone </th>
+               <th scope="col"> Téléphone mobile </th>
+               <th scope="col"> Email </th>
+               <th scope="col"> Interne </th>
+               <th scope="col"> Date d'entrée </th>
+               <th scope="col"> Date de fin </th>
+            </tr>
+         </thead>
+         <tbody>
+         {% for employee in employees %}
+            <tr data-href="{{ path('employee_edit', {'id':employee.id}) }}">
+               <td>{{ employee.name }}</td>
+               <td>{{ employee.firstname }}</td>
+               <td>{{ employee.adress }}, {{ employee.zipcode }}, {{ employee.city }} </td>
+               <td>{{ employee.phone }}</td>
+               <td>{{ employee.mobilePhone }}</td>
+               <td>{{ employee.email }}</td>
+               <td>{% if employee.internal %} Oui {% else %} Non {% endif %}</td>
+               <td>{{ employee.enterDate|date("d/m/Y") }}</td>
+               <td>{{ employee.endDate|date("d/m/Y") }}</td>
+            </tr>
+         {% endfor %}
+         </tbody>
+      </table>
+   
+{% endblock %}
+
+
+
+
+{% block javascripts %}
+	 <script src="/js/employee/index.js"></script>
+   <script src="/js/modules/dynamicPopup.js"></script>
+	<script> nameElement = "table#employees tbody tr"; dynamicPopup(nameElement, "modal-area") </script>
+{% endblock %}

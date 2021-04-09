@@ -1,0 +1,55 @@
+{% extends '/base.html.twig' %}
+
+{% block title %}Gestion des véhicules {% endblock %}
+{% block stylesheets %}
+   <link rel="stylesheet" href="/css/vehicle/index.css"> 
+   <link rel="stylesheet" href="/css/vehicle/edit.css"> 
+{% endblock %}
+
+{% block body %}
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+         <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+               <li class="nav-item active">
+                  <a  href="{{path('vehicle_add')}}" class="nav-link"> 
+                     <button type="button" form="add_vehicle_form" class="btn btn-primary">Ajouter un véhicule</button>
+                  </a>
+               </li>
+            </ul>
+            <p id="extraButton"> </p>
+         </div>
+   </nav>
+   <div>
+      <BR>
+   </div>
+      <table class="table table-striped" id="vehicles">
+         <thead class="thead-dark">
+            <tr>
+               <th scope="col"> Nom </th>
+               <th scope="col"> Immatriculation </th>
+            </tr>
+         </thead>
+         <tbody>
+         {% for vehicle in vehicles %}
+              <tr data-href="{{ path('vehicle_edit', {'id':vehicle.id}) }}">
+               <td>{{vehicle.name}}</td>
+               <td> {{vehicle.immat}}</td>
+            </tr>
+         {% endfor %}
+           
+         </tbody>
+      </table>
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+   <script src="/js/vehicle/index.js"></script>
+   <script src="/js/modules/dynamicPopup.js"></script>
+	<script> elementName = "table#vehicles tbody tr"; dynamicPopup(elementName, "modal-area") </script>
+{% endblock %}

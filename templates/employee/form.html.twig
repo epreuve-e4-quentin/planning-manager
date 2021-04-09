@@ -1,0 +1,63 @@
+ <div class="form-row">
+    <div class="form-group col-md-6">
+      {{ form_row(form.name)}}
+    </div>
+    <div class="form-group col-md-6">
+     {{ form_row(form.firstname) }}
+    </div>
+  </div>
+
+   <div class="form-row">
+    <div class="form-group col-md">
+      {{ form_row(form.adress)}}
+    </div>
+  </div>
+
+   <div class="form-row">
+    <div class="form-group col-md-6">
+      {{ form_row(form.zipcode)}}
+    </div>
+    <div class="form-group col-md-6">
+     {{ form_row(form.city) }}
+    </div>
+  </div>
+
+
+   <div class="form-row">
+    <div class="form-group col-md-6">
+      {{ form_row(form.phone)}}
+    </div>
+    <div class="form-group col-md-6">
+     {{ form_row(form.mobilePhone) }}
+    </div>
+  </div>
+
+     <div class="form-row">
+    <div class="form-group col-md">
+      {{ form_row(form.email)}}
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      {{ form_row(form.enterDate)}}
+    </div>
+        <div class="form-group col-md-6"  id="endDate">
+     {{ form_row(form.endDate) }}
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md">
+   {{ form_row(form.internal) }}
+    </div>
+    <div class="form-group col-md">
+
+    {{ form_widget(form.checkEndDate, {'id' : 'checkenddate' , 'attr': { 'onClick' : 'checkCheckBox("checkenddate");' } } ) }}
+
+    </div>
+  </div>
+
+{% block javascripts %}
+  <script src="/js/employee/form.js"></script>
+{% endblock %}

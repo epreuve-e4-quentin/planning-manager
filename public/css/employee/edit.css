@@ -1,0 +1,10 @@
+#div1, #div2, .allowDrop {
+   width: 350px;
+   height: 70px;
+   padding: 10px;
+   border: 1px solid #aaaaaa;
+ }
+
+ .draggable{
+   display: block;
+ }

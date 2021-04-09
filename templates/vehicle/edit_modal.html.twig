@@ -1,0 +1,24 @@
+{% extends '/modules/form_modal.html.twig' %}
+
+{% block title %} Modification "{{vehicle.name}}" ({{vehicle.id}}){% endblock %}
+
+{% block form %} 
+  {{ form_start(form, {'attr':{'id':'edit_vehicle_form'}, 'method': 'POST', 'action': path('vehicle_edit', {'id': vehicle.id} )} ) }}
+   {{ form_row(form.name) }}
+   {{ form_row(form.immat) }}
+{{ form_end(form) }}
+   <script>$("#popup").modal('show'); //Afficher le modal</script>
+{% endblock %}
+
+
+{% block footer %}
+   <a href="{{path('vehicle')}}">
+         <button type="button" class="btn btn-link">Retourner à la liste des véhicules</button>         
+   </a>  
+   <form method="POST" action="{{ path('vehicle_delete', {'id': vehicle.id }) }}" id='delete_vehicle_form'>
+      <button type="submit" onclick='return confirm("Voulez-vous vraimment supprimer le véhicule: {{ vehicle.name }}  ")' class="btn btn-danger" >Supprimer</button>
+   </form>
+    <button type="button" onclick="form_modal_submit()" form="edit_vehicle_form" class="btn btn-primary">Modifier</button>
+{% endblock %}
+
+{% block idToReload %}vehicles{% endblock %}

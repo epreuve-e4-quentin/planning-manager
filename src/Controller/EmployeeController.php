@@ -17,6 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class EmployeeController extends AbstractController
 {
     /**
+     * @Route("/home", name="home")
      * @Route("/employee", name="employee")
      */
     public function index(EntityManagerInterface $em): Response

@@ -17,6 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class EmployeeController extends AbstractController
 {
     /**
+     * @Route("/", name="index")
      * @Route("/home", name="home")
      * @Route("/employee", name="employee")
      */

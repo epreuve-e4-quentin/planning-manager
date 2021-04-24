@@ -103,6 +103,7 @@ CREATE TABLE `user` (
   `roles_json` text NOT NULL,
   `password` varchar(250) NOT NULL,
   `username` varchar(250) NOT NULL,
+  PRIMARY KEY (`person_id`),
   KEY `person_id` (`person_id`),
   CONSTRAINT `user_ibfk_2` FOREIGN KEY (`person_id`) REFERENCES `person` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

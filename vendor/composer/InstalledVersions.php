@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '3b1c1f641ccde833cdd7d10f09ac1f129603413c',
+    'reference' => 'd740f3b89b8bffa07d86f7825257a1d4c2720a5c',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '3b1c1f641ccde833cdd7d10f09ac1f129603413c',
+      'reference' => 'd740f3b89b8bffa07d86f7825257a1d4c2720a5c',
     ),
     'composer/package-versions-deprecated' => 
     array (
@@ -217,12 +217,12 @@ private static $installed = array (
     ),
     'laminas/laminas-code' => 
     array (
-      'pretty_version' => '4.2.0',
-      'version' => '4.2.0.0',
+      'pretty_version' => '4.2.1',
+      'version' => '4.2.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'e7e8f8a9c267520051d8026ff1da74823a3d8b97',
+      'reference' => 'a1e7f8b6467ac7f277b8e027e8537fa13664a8d8',
     ),
     'laminas/laminas-eventmanager' => 
     array (
@@ -1100,7 +1100,7 @@ private static $installed = array (
     array (
       'replaced' => 
       array (
-        0 => '4.2.0',
+        0 => '4.2.1',
       ),
     ),
     'zendframework/zend-eventmanager' => 

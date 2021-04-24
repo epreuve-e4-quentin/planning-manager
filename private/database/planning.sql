@@ -5,9 +5,9 @@ SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
-DROP DATABASE IF EXISTS `planning-v2`;
-CREATE DATABASE `planning-test` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
-USE `planning-test`;
+DROP DATABASE IF EXISTS `planning-e4`;
+CREATE DATABASE `planning-e4` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+USE `planning-e4`;
 
 SET NAMES utf8mb4;
 

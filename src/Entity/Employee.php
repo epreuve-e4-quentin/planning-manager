@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\Person;
 
 /**
  * Employee
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="employee")
  * @ORM\Entity
  */
-class Employee
+class Employee extends Person
 {
     /**
      * @var string
@@ -82,17 +83,6 @@ class Employee
      */
     private $endDate;
 
-    /**
-     * @var \Person
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Person")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="person_id", referencedColumnName="id")
-     * })
-     */
-    private $person;
 
     public function getName(): ?string
     {

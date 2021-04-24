@@ -11,9 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-/**
-* @IsGranted("ROLE_USER")
-*/
+
 class EmployeeController extends AbstractController
 {
     /**
@@ -23,6 +21,7 @@ class EmployeeController extends AbstractController
      */
     public function index(EntityManagerInterface $em): Response
     {
+
         //Liste des employés
         $repo = $em->getRepository(Employee::class);
         $employees = $repo->findAll();

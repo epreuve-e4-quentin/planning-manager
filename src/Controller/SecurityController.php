@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use dump;
+use App\Entity\Employee;
 use App\Entity\User ; 
 use App\Form\RegistrationType ; 
 use Doctrine\ORM\EntityManagerInterface;
@@ -13,7 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 class SecurityController extends AbstractController
@@ -22,16 +21,15 @@ class SecurityController extends AbstractController
     /**
      * @Route("/users", name="security_list")
      * 
-     * @IsGranted("ROLE_ADMIN")
      */
     public function index(EntityManagerInterface $em): Response
     {
 
-
+       
         //Liste des uilisate
-        $repo = $em->getRepository(User::class);
+        $repo = $em->getRepository(Employee::class);
         $users = $repo->findAll();
-     
+        dd($users);
 
         return $this->render('security/index.html.twig', [
             'users' => $users
@@ -40,7 +38,6 @@ class SecurityController extends AbstractController
      /**
      * @Route("/inscription", name="security_registration")
      * 
-     * @IsGranted("ROLE_ADMIN")
      */
     public function Registration(EntityManagerInterface $em, Request $request, UserPasswordEncoderInterface $encoder ) 
     {

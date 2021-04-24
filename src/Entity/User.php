@@ -4,15 +4,19 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use App\Entity\Person;
 
 /**
  * User
  *
- * @ORM\Table(name="user", indexes={@ORM\Index(name="person_id", columns={"person_id"})})
+ * @ORM\Table(name="user")
  * @ORM\Entity
  */
-class User implements UserInterface
+class User extends Person implements UserInterface
 {
+
+
+
     /**
      * @var string
      *
@@ -34,17 +38,7 @@ class User implements UserInterface
      */
     private $username;
 
-    /**
-     * @var \Person
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
-     * @ORM\OneToOne(targetEntity="Person")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="person_id", referencedColumnName="id")
-     * })
-     */
-    private $person;
+
 
     //-------------User Interface------------------
     public function eraseCredentials()
@@ -95,17 +89,12 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPerson(): ?Person
+    public function getId(): ?int
     {
-        return $this->person;
+        return $this->id;
     }
 
-    public function setPerson(?Person $person): self
-    {
-        $this->person = $person;
-
-        return $this;
-    }
+  
 
 
 }

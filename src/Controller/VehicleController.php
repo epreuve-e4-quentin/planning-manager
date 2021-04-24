@@ -13,11 +13,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-/**
-* @IsGranted("ROLE_USER")
-*/
+
+
 
 class VehicleController extends AbstractController
 {

@@ -3,11 +3,17 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\InheritanceType;
+use Doctrine\ORM\Mapping\DiscriminatorMap;
+use Doctrine\ORM\Mapping\DiscriminatorColumn;
 
 /**
  * Person
  *
  * @ORM\Table(name="person")
+ * @InheritanceType("JOINED")
+ * @DiscriminatorColumn(name="person_type", type="string")
+ * @DiscriminatorMap({"person" = "Person", "employee" = "Employee", "user" = "User"})
  * @ORM\Entity
  */
 class Person
@@ -27,6 +33,8 @@ class Person
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
     private $email;
+
+
 
     /**
      * @var \DateTime

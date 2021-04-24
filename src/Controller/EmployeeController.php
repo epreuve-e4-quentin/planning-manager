@@ -48,7 +48,7 @@ class EmployeeController extends AbstractController
             $currentUser = $this->getUser();
             $employee->setLastUpdateUser( $currentUser); 
             $employee->setLastUpdateAt(new \DateTime("now",new \DateTimeZone('Indian/Mauritius'))) ; 
-
+            
             $data = $form->getData();
 
             $entityManager->persist($data);

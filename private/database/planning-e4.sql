@@ -28,12 +28,6 @@ CREATE TABLE `employee` (
   CONSTRAINT `employee_ibfk_2` FOREIGN KEY (`id`) REFERENCES `person` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `employee` (`id`, `name`, `firstname`, `adress`, `zipcode`, `city`, `phone`, `mobile_phone`, `internal`, `enter_date`, `end_date`) VALUES
-(11,	'Bigot',	'Andréa',	'89 rue par la',	'97480',	'saint-joseph',	'06898568',	'64845486',	0,	'2021-04-23',	NULL),
-(12,	'Hoareau',	'Quentin',	'10 rue machin truc',	'97480',	'Saint-Joseph',	'0262382425',	'0692186498',	1,	'2021-09-12',	'2016-01-01'),
-(13,	'Ramin',	'Emmanuel',	'39 rue des la tête de turc',	'97429',	'Petit-Ile',	'0262382425',	'0692896498',	0,	'2020-09-12',	NULL),
-(14,	'Bigot',	'Andréa',	'26 avenue des champs',	'97410',	'Vincendo',	'0262382425',	'0692286498',	1,	'2021-06-08',	NULL)
-ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `name` = VALUES(`name`), `firstname` = VALUES(`firstname`), `adress` = VALUES(`adress`), `zipcode` = VALUES(`zipcode`), `city` = VALUES(`city`), `phone` = VALUES(`phone`), `mobile_phone` = VALUES(`mobile_phone`), `internal` = VALUES(`internal`), `enter_date` = VALUES(`enter_date`), `end_date` = VALUES(`end_date`);
 
 DELIMITER ;;
 
@@ -74,38 +68,6 @@ CREATE TABLE `person` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `person` (`id`, `email`, `create_at`, `last_update_at`, `last_update_user_id`, `person_type`) VALUES
-(1,	'quentin.h@gmail.com',	'2021-02-27 11:36:55',	'2021-02-27 11:36:55',	2,	'user'),
-(2,	'ramin.e@gmail.com',	'2021-02-27 11:36:55',	'2021-02-27 11:36:55',	2,	'employee'),
-(3,	'simon@simon.fr',	'2021-03-06 04:20:49',	'2021-03-06 04:20:49',	12,	'employee'),
-(11,	'tutu@tutu.fr',	'2021-03-05 12:42:47',	'2021-03-06 05:06:09',	12,	'employee'),
-(12,	'emmanuel.ramin@lavarun.re',	'2021-03-06 03:11:47',	'2021-03-06 03:11:47',	NULL,	'employee'),
-(13,	'test@test.fr',	'2021-03-06 03:29:44',	'2021-03-06 05:33:53',	12,	'employee'),
-(14,	'tu@tu.tu',	'2021-03-06 04:19:00',	'2021-03-06 04:19:00',	12,	'employee')
-ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `email` = VALUES(`email`), `create_at` = VALUES(`create_at`), `last_update_at` = VALUES(`last_update_at`), `last_update_user_id` = VALUES(`last_update_user_id`), `person_type` = VALUES(`person_type`);
-
-DROP TABLE IF EXISTS `planning`;
-CREATE TABLE `planning` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `date` date NOT NULL,
-  `employee_id` int(11) NOT NULL,
-  `schedule_id` int(11) NOT NULL,
-  `vehicle_id` int(11) DEFAULT NULL,
-  `create_at` datetime NOT NULL DEFAULT current_timestamp(),
-  `last_update_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `last_update_user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `planning_ibfk_2` (`schedule_id`),
-  KEY `planning_ibfk_3` (`vehicle_id`),
-  KEY `planning_ibfk_4` (`last_update_user_id`),
-  KEY `employee_id` (`employee_id`),
-  CONSTRAINT `planning_ibfk_2` FOREIGN KEY (`schedule_id`) REFERENCES `schedule` (`id`),
-  CONSTRAINT `planning_ibfk_3` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle` (`id`),
-  CONSTRAINT `planning_ibfk_5` FOREIGN KEY (`last_update_user_id`) REFERENCES `user` (`id`),
-  CONSTRAINT `planning_ibfk_6` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=280568 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
 DROP TABLE IF EXISTS `schedule`;
 CREATE TABLE `schedule` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -119,12 +81,6 @@ CREATE TABLE `schedule` (
   CONSTRAINT `schedule_ibfk_1` FOREIGN KEY (`last_update_user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `schedule` (`id`, `name`, `create_at`, `last_update_at`, `last_update_user_id`) VALUES
-(1,	'Service',	'2021-02-27 11:36:55',	'2021-04-23 13:49:39',	1),
-(8,	'Congé',	'2021-03-07 06:40:47',	'2021-04-23 13:25:58',	1),
-(9,	'Maladie',	'2021-03-07 06:41:07',	'2021-04-23 13:25:58',	1),
-(10,	'Repos',	'2021-03-07 06:43:16',	'2021-04-23 13:25:58',	1)
-ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `name` = VALUES(`name`), `create_at` = VALUES(`create_at`), `last_update_at` = VALUES(`last_update_at`), `last_update_user_id` = VALUES(`last_update_user_id`);
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -136,10 +92,6 @@ CREATE TABLE `user` (
   KEY `person_id` (`id`),
   CONSTRAINT `user_ibfk_2` FOREIGN KEY (`id`) REFERENCES `person` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `user` (`id`, `roles_json`, `password`, `username`) VALUES
-(1,	'[\"ROLE_ADMIN\"]',	'$2y$10$BAgg6OnHQt6gvoCSBIMqieMj6TUrQG.K.6bkfKnAL/19SGfaNi89.',	'Quentin')
-ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `roles_json` = VALUES(`roles_json`), `password` = VALUES(`password`), `username` = VALUES(`username`);
 
 DELIMITER ;;
 
@@ -166,6 +118,31 @@ CREATE TABLE `vehicle` (
   CONSTRAINT `vehicle_ibfk_1` FOREIGN KEY (`last_update_user_id`) REFERENCES `person` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+
+-- 2021-04-27 19:41:15
+
+
+INSERT INTO `employee` (`id`, `name`, `firstname`, `adress`, `zipcode`, `city`, `phone`, `mobile_phone`, `internal`, `enter_date`, `end_date`) VALUES
+(11,	'Bigot',	'Andréa',	'89 rue par la',	'97480',	'saint-joseph',	'06898568',	'64845486',	0,	'2021-04-23',	NULL),
+(12,	'Hoareau',	'Quentin',	'10 rue machin truc',	'97480',	'Saint-Joseph',	'0262382425',	'0692186498',	1,	'2021-09-12',	'2016-01-01'),
+(13,	'Ramin',	'Emmanuel',	'39 rue des la tête de turc',	'97429',	'Petit-Ile',	'0262382425',	'0692896498',	0,	'2020-09-12',	NULL),
+(14,	'Bigot',	'Andréa',	'26 avenue des champs',	'97410',	'Vincendo',	'0262382425',	'0692286498',	1,	'2021-06-08',	NULL)
+ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `name` = VALUES(`name`), `firstname` = VALUES(`firstname`), `adress` = VALUES(`adress`), `zipcode` = VALUES(`zipcode`), `city` = VALUES(`city`), `phone` = VALUES(`phone`), `mobile_phone` = VALUES(`mobile_phone`), `internal` = VALUES(`internal`), `enter_date` = VALUES(`enter_date`), `end_date` = VALUES(`end_date`);
+
+
+INSERT INTO `schedule` (`id`, `name`, `create_at`, `last_update_at`, `last_update_user_id`) VALUES
+(1,	'Service',	'2021-02-27 11:36:55',	'2021-04-23 13:49:39',	1),
+(8,	'Congé',	'2021-03-07 06:40:47',	'2021-04-23 13:25:58',	1),
+(9,	'Maladie',	'2021-03-07 06:41:07',	'2021-04-23 13:25:58',	1),
+(10,	'Repos',	'2021-03-07 06:43:16',	'2021-04-23 13:25:58',	1)
+ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `name` = VALUES(`name`), `create_at` = VALUES(`create_at`), `last_update_at` = VALUES(`last_update_at`), `last_update_user_id` = VALUES(`last_update_user_id`);
+
+
+
+INSERT INTO `user` (`id`, `roles_json`, `password`, `username`) VALUES
+(1,	'[\"ROLE_ADMIN\"]',	'$2y$10$BAgg6OnHQt6gvoCSBIMqieMj6TUrQG.K.6bkfKnAL/19SGfaNi89.',	'Quentin')
+ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `roles_json` = VALUES(`roles_json`), `password` = VALUES(`password`), `username` = VALUES(`username`);
+
 INSERT INTO `vehicle` (`id`, `name`, `immat`, `create_at`, `last_update_at`, `last_update_user_id`) VALUES
 (1,	'Vehicule Default',	'XX-XXX-XX',	'2021-02-27 11:36:55',	'2021-02-27 11:36:55',	2),
 (7,	'Ambulance Manu 2',	'BZ-966-AP',	'2021-02-28 16:48:17',	'2021-03-11 11:40:56',	13),
@@ -182,5 +159,3 @@ INSERT INTO `vehicle` (`id`, `name`, `immat`, `create_at`, `last_update_at`, `la
 (26,	'Vehicule Martial',	'BI-145-AZ',	'2021-03-08 12:09:18',	'2021-03-08 12:09:18',	13),
 (27,	'Vehicule Manu25',	'BZ-AP966-',	'2021-03-11 11:28:37',	'2021-03-11 11:28:37',	13)
 ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `name` = VALUES(`name`), `immat` = VALUES(`immat`), `create_at` = VALUES(`create_at`), `last_update_at` = VALUES(`last_update_at`), `last_update_user_id` = VALUES(`last_update_user_id`);
-
--- 2021-04-24 07:56:55

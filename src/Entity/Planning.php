@@ -67,7 +67,7 @@ class Planning
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="last_update_user_id", referencedColumnName="person_id")
+     *   @ORM\JoinColumn(name="last_update_user_id", referencedColumnName="id")
      * })
      */
     private $lastUpdateUser;
@@ -77,7 +77,7 @@ class Planning
      *
      * @ORM\ManyToOne(targetEntity="Employee")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="employee_id", referencedColumnName="person_id")
+     *   @ORM\JoinColumn(name="employee_id", referencedColumnName="id")
      * })
      */
     private $employee;

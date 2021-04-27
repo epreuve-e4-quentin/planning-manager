@@ -47,7 +47,7 @@ class Schedule
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="last_update_user_id", referencedColumnName="person_id")
+     *   @ORM\JoinColumn(name="last_update_user_id", referencedColumnName="id")
      * })
      */
     private $lastUpdateUser;

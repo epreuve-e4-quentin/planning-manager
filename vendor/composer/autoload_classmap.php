@@ -7,10 +7,15 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Controller\\EmployeeController' => $baseDir . '/src/Controller/EmployeeController.php',
-    'App\\Controller\\EmployeeViewController' => $baseDir . '/src/Controller/EmployeeViewController.php',
     'App\\Controller\\ScheduleController' => $baseDir . '/src/Controller/ScheduleController.php',
     'App\\Controller\\SecurityController' => $baseDir . '/src/Controller/SecurityController.php',
     'App\\Controller\\VehicleController' => $baseDir . '/src/Controller/VehicleController.php',
+    'App\\Entity\\Employee' => $baseDir . '/src/Entity/Employee.php',
+    'App\\Entity\\Person' => $baseDir . '/src/Entity/Person.php',
+    'App\\Entity\\Planning' => $baseDir . '/src/Entity/Planning.php',
+    'App\\Entity\\Schedule' => $baseDir . '/src/Entity/Schedule.php',
+    'App\\Entity\\User' => $baseDir . '/src/Entity/User.php',
+    'App\\Entity\\Vehicle' => $baseDir . '/src/Entity/Vehicle.php',
     'App\\Form\\EmployeeType' => $baseDir . '/src/Form/EmployeeType.php',
     'App\\Form\\EmployeeViewType' => $baseDir . '/src/Form/EmployeeViewType.php',
     'App\\Form\\PlanningFilterType' => $baseDir . '/src/Form/PlanningFilterType.php',

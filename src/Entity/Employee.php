@@ -83,7 +83,6 @@ class Employee extends Person
      */
     private $endDate;
 
-
     public function getName(): ?string
     {
         return $this->name;
@@ -204,17 +203,7 @@ class Employee extends Person
         return $this;
     }
 
-    public function getPerson(): ?Person
-    {
-        return $this->person;
-    }
 
-    public function setPerson(?Person $person): self
-    {
-        $this->person = $person;
-
-        return $this;
-    }
 
 
 }

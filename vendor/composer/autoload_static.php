@@ -564,10 +564,15 @@ class ComposerStaticInit5c0d2b4bcb44e0878f94d600970f9198
 
     public static $classMap = array (
         'App\\Controller\\EmployeeController' => __DIR__ . '/../..' . '/src/Controller/EmployeeController.php',
-        'App\\Controller\\EmployeeViewController' => __DIR__ . '/../..' . '/src/Controller/EmployeeViewController.php',
         'App\\Controller\\ScheduleController' => __DIR__ . '/../..' . '/src/Controller/ScheduleController.php',
         'App\\Controller\\SecurityController' => __DIR__ . '/../..' . '/src/Controller/SecurityController.php',
         'App\\Controller\\VehicleController' => __DIR__ . '/../..' . '/src/Controller/VehicleController.php',
+        'App\\Entity\\Employee' => __DIR__ . '/../..' . '/src/Entity/Employee.php',
+        'App\\Entity\\Person' => __DIR__ . '/../..' . '/src/Entity/Person.php',
+        'App\\Entity\\Planning' => __DIR__ . '/../..' . '/src/Entity/Planning.php',
+        'App\\Entity\\Schedule' => __DIR__ . '/../..' . '/src/Entity/Schedule.php',
+        'App\\Entity\\User' => __DIR__ . '/../..' . '/src/Entity/User.php',
+        'App\\Entity\\Vehicle' => __DIR__ . '/../..' . '/src/Entity/Vehicle.php',
         'App\\Form\\EmployeeType' => __DIR__ . '/../..' . '/src/Form/EmployeeType.php',
         'App\\Form\\EmployeeViewType' => __DIR__ . '/../..' . '/src/Form/EmployeeViewType.php',
         'App\\Form\\PlanningFilterType' => __DIR__ . '/../..' . '/src/Form/PlanningFilterType.php',

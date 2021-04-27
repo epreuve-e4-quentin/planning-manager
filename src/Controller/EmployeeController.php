@@ -25,6 +25,7 @@ class EmployeeController extends AbstractController
         //Liste des employés
         $repo = $em->getRepository(Employee::class);
         $employees = $repo->findAll();
+        dd($employees);
         
         return $this->render('employee/index.html.twig', [
             'employees' => $employees,

@@ -28,14 +28,29 @@ CREATE TABLE `employee` (
   CONSTRAINT `employee_ibfk_2` FOREIGN KEY (`id`) REFERENCES `person` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+DROP TABLE IF EXISTS `planning`;
+CREATE TABLE `planning` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` date NOT NULL,
+  `employee_id` int(11) NOT NULL,
+  `schedule_id` int(11) NOT NULL,
+  `vehicle_id` int(11) DEFAULT NULL,
+  `create_at` datetime NOT NULL DEFAULT current_timestamp(),
+  `last_update_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `last_update_user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `planning_ibfk_2` (`schedule_id`),
+  KEY `planning_ibfk_3` (`vehicle_id`),
+  KEY `planning_ibfk_4` (`last_update_user_id`),
+  KEY `employee_id` (`employee_id`),
+  CONSTRAINT `planning_ibfk_2` FOREIGN KEY (`schedule_id`) REFERENCES `schedule` (`id`),
+  CONSTRAINT `planning_ibfk_3` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicle` (`id`),
+  CONSTRAINT `planning_ibfk_5` FOREIGN KEY (`last_update_user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `planning_ibfk_6` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=264952 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 
 DELIMITER ;;
-
-CREATE TRIGGER `employee_create` BEFORE INSERT ON `employee` FOR EACH ROW
-begin 
- UPDATE person SET person_type="employee" WHERE id=NEW.id ;
-end;;
-
 CREATE TRIGGER `insert_scheduleplanning` AFTER INSERT ON `employee` FOR EACH ROW
 begin 
 	declare currentyear int ;
@@ -48,7 +63,7 @@ begin
 	select DATE_FORMAT( (NOW() ),"%Y%m%d") into currentdate ; 
 
 	label1: while countyear <= endyear DO 
-		INSERT INTO `planning` (`date`, `employee_id`,`schedule_id`,`vehicle_id`) VALUES (currentdate, NEW.person_id ,1,NULL) ;
+		INSERT INTO `planning` (`date`, `employee_id`,`schedule_id`,`vehicle_id`) VALUES (currentdate, NEW.id ,1,NULL) ;
 		select DATE_FORMAT(DATE_ADD(currentdate, INTERVAL 1 DAY),"%Y%m%d") into currentdate ; 
 		select left(DATE_FORMAT(currentdate,"%Y%m%d"),4) into countyear ; 
 		
@@ -64,7 +79,7 @@ CREATE TABLE `person` (
   `create_at` datetime NOT NULL DEFAULT current_timestamp(),
   `last_update_at` datetime DEFAULT current_timestamp(),
   `last_update_user_id` int(11) DEFAULT NULL,
-  `person_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `person_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'person',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -93,12 +108,6 @@ CREATE TABLE `user` (
   CONSTRAINT `user_ibfk_2` FOREIGN KEY (`id`) REFERENCES `person` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-DELIMITER ;;
-
-CREATE TRIGGER `user_bi` BEFORE INSERT ON `user` FOR EACH ROW
-begin 
- UPDATE person SET person_type="user" WHERE id=NEW.id ;
-end;;
 
 DELIMITER ;
 
@@ -159,3 +168,12 @@ INSERT INTO `vehicle` (`id`, `name`, `immat`, `create_at`, `last_update_at`, `la
 (26,	'Vehicule Martial',	'BI-145-AZ',	'2021-03-08 12:09:18',	'2021-03-08 12:09:18',	13),
 (27,	'Vehicule Manu25',	'BZ-AP966-',	'2021-03-11 11:28:37',	'2021-03-11 11:28:37',	13)
 ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `name` = VALUES(`name`), `immat` = VALUES(`immat`), `create_at` = VALUES(`create_at`), `last_update_at` = VALUES(`last_update_at`), `last_update_user_id` = VALUES(`last_update_user_id`);
+
+INSERT INTO `person` (`id`, `email`, `create_at`, `last_update_at`, `last_update_user_id`, `person_type`) VALUES
+(1,	'quentin.h@gmail.com',	'2021-02-27 11:36:55',	'2021-02-27 11:36:55',	2, 'user'),
+(2,	'ramin.e@gmail.com',	'2021-02-27 11:36:55',	'2021-02-27 11:36:55',	2, 'person'),
+(3,	'simon@simon.fr',	'2021-03-06 04:20:49',	'2021-03-06 04:20:49',	12, 'person'),
+(11,	'tutu@tutu.fr',	'2021-03-05 12:42:47',	'2021-03-06 05:06:09',	12, 'employee'),
+(12,	'emmanuel.ramin@lavarun.re',	'2021-03-06 03:11:47',	'2021-03-06 03:11:47',	NULL, 'employee'),
+(13,	'test@test.fr',	'2021-03-06 03:29:44',	'2021-03-06 05:33:53',	12, 'employee'),
+(14,	'tu@tu.tu',	'2021-03-06 04:19:00',	'2021-03-06 04:19:00',	12, 'employee');

@@ -49,11 +49,14 @@ class Person
     private $lastUpdateAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var int|null
+     * @var \User
      *
-     * @ORM\Column(name="last_update_user_id", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="last_update_user_id", referencedColumnName="id")
+     * })
      */
-    private $lastUpdateUserId;
+    private $lastUpdateUser;
 
     public function getId(): ?int
     {
@@ -96,17 +99,18 @@ class Person
         return $this;
     }
 
-    public function getLastUpdateUserId(): ?int
+    public function getLastUpdateUser(): ?User
     {
-        return $this->lastUpdateUserId;
+        return $this->lastUpdateUser;
     }
 
-    public function setLastUpdateUserId(?int $lastUpdateUserId): self
+    public function setLastUpdateUser(?User $lastUpdateUser): self
     {
-        $this->lastUpdateUserId = $lastUpdateUserId;
+        $this->lastUpdateUser = $lastUpdateUser;
 
         return $this;
     }
+
 
 
 

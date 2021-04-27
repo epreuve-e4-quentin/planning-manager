@@ -21,11 +21,9 @@ class EmployeeController extends AbstractController
      */
     public function index(EntityManagerInterface $em): Response
     {
-
         //Liste des employés
         $repo = $em->getRepository(Employee::class);
         $employees = $repo->findAll();
-    
         
         return $this->render('employee/index.html.twig', [
             'employees' => $employees,

@@ -170,10 +170,10 @@ INSERT INTO `vehicle` (`id`, `name`, `immat`, `create_at`, `last_update_at`, `la
 ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `name` = VALUES(`name`), `immat` = VALUES(`immat`), `create_at` = VALUES(`create_at`), `last_update_at` = VALUES(`last_update_at`), `last_update_user_id` = VALUES(`last_update_user_id`);
 
 INSERT INTO `person` (`id`, `email`, `create_at`, `last_update_at`, `last_update_user_id`, `person_type`) VALUES
-(1,	'quentin.h@gmail.com',	'2021-02-27 11:36:55',	'2021-02-27 11:36:55',	2, 'user'),
-(2,	'ramin.e@gmail.com',	'2021-02-27 11:36:55',	'2021-02-27 11:36:55',	2, 'person'),
-(3,	'simon@simon.fr',	'2021-03-06 04:20:49',	'2021-03-06 04:20:49',	12, 'person'),
-(11,	'tutu@tutu.fr',	'2021-03-05 12:42:47',	'2021-03-06 05:06:09',	12, 'employee'),
+(1,	'quentin.h@gmail.com',	'2021-02-27 11:36:55',	'2021-02-27 11:36:55',	1, 'user'),
+(2,	'ramin.e@gmail.com',	'2021-02-27 11:36:55',	'2021-02-27 11:36:55',	1, 'person'),
+(3,	'simon@simon.fr',	'2021-03-06 04:20:49',	'2021-03-06 04:20:49',	1, 'person'),
+(11,	'tutu@tutu.fr',	'2021-03-05 12:42:47',	'2021-03-06 05:06:09',	1, 'employee'),
 (12,	'emmanuel.ramin@lavarun.re',	'2021-03-06 03:11:47',	'2021-03-06 03:11:47',	NULL, 'employee'),
-(13,	'test@test.fr',	'2021-03-06 03:29:44',	'2021-03-06 05:33:53',	12, 'employee'),
-(14,	'tu@tu.tu',	'2021-03-06 04:19:00',	'2021-03-06 04:19:00',	12, 'employee');
+(13,	'test@test.fr',	'2021-03-06 03:29:44',	'2021-03-06 05:33:53',	1, 'employee'),
+(14,	'tu@tu.tu',	'2021-03-06 04:19:00',	'2021-03-06 04:19:00',	1, 'employee');

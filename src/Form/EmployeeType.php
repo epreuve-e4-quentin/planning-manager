@@ -27,7 +27,6 @@ class EmployeeType extends AbstractType
             ->add('phone', TextType::class, ["label"=>"Téléphone fixe" , 'required' => false])
             ->add('mobilePhone', TextType::class, ["label"=>"Téléphone mobile" , 'required' => false])
             ->add('email', EmailType::class, ["label"=>"Email" , 'required' => false])
-            ->add('checkEndDate', CheckboxType::class, ["label"=>"Fin de contrat" , 'required' => false])
             ->add('internal', CheckboxType::class, ["label"=>"Interne" , 'required' => false])
             ->add('enterDate', DateType::class, ["label"=>"Date d'entrée" , 'required' => false])
             ->add('endDate', DateType::class, ["label"=>"Date de fin" , 'required' => false])

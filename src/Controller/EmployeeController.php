@@ -84,9 +84,6 @@ class EmployeeController extends AbstractController
         if( $form->isSubmitted() && $form->isValid() ){ //Si le fourmulaire à été envoyé
             
             //.......Application des données (BDD/Doctrine)........
-            if ( ! $employee->getCheckEndDate()) {
-                $employee->setEndDate(null);
-            }
             $em->persist($employee);
             $em->flush();
 

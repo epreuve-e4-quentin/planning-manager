@@ -4,7 +4,6 @@
 
 {% block form %} 
    {{ form_start(form, {'attr':{'id':'edit_schedule_form', 'class': 'form_add' }, 'method': 'POST', 'action': path('schedule_edit', {'id':schedule.id} )} ) }}
-   
       {% include '/schedule/form.html.twig' %}  
    {{ form_end(form) }}
    <script>$("#popup").modal('show'); //Afficher le modal</script>

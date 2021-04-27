@@ -18,10 +18,6 @@ class ScheduleType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, ["label" => "Nom"])
-            ->add('defaultAmplitude', TimeType::class, ["label" => "Amplitude par défaut"])
-            ->add('amplitudeCoeff', NumberType::class, ["label" => "Coefficient d'amplitude"])
-            ->add('defaultForced', CheckboxType::class, ["label" => "Forcé par défaut", 'required'=> false])
-            ->add('amplitudeStartExtra',TimeType::class, ["label" => "Démarrage des heures supplémentaires"])
         ;
     }
 

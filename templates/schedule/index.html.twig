@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gestion des Horaires{% endblock %}
+{% block title %}Gestion des Horaires
+{% endblock %}
 {% block stylesheets %}
 	{# <link rel="stylesheet" href="/css/schedule/index.css">#}
-	<link rel="stylesheet" href="/css/schedule/edit.css"> 
+	<link rel="stylesheet" href="/css/schedule/edit.css">
 {% endblock %}
 
 {% block body %}
@@ -12,17 +13,17 @@
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-			<div class="collapse navbar-collapse" id="navbarColor02">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-					<a  href="{{path('schedule_add')}}" class="nav-link"> 
+		<div class="collapse navbar-collapse" id="navbarColor02">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a href="{{path('schedule_add')}}" class="nav-link">
 						<button type="button" form="add_schedule_form" class="btn btn-primary">Ajouter un horaire</button>
 					</a>
-					</li>
-				</ul>
-				<p id="extraButton"> </p>
-			</div>
-		</nav>
+				</li>
+			</ul>
+			<p id="extraButton"></p>
+		</div>
+	</nav>
 	<div>
 		<BR>
 	</div>
@@ -30,36 +31,31 @@
 	<table class="table table-striped popupTableAxios" id="schedules">
 		<thead class="thead-dark">
 			<tr>
-				<th scope="col">Nom  ></th>
-				<th scope="col">Amplitude par défaut  </th>
-				<th scope="col">Coefficient d'amplitude  </th>
-				<th scope="col">Forcé par défaut  </th>
-				<th scope="col">Amplitude avant démarrage des heures supplémentaires  </th>
-				<th scope="col">Temps de travail effectif </th>
+				<th scope="col">Id</th>
+				<th scope="col">Nom</th>
+
 			</tr>
 		</thead>
 		<tbody>
 			{% for schedule in schedules %}
 				<tr data-href="{{ path('schedule_edit', {'id':schedule.id}) }}">
-					<td> {{schedule.name}}</td>
-					<td> {{ schedule.defaultAmplitude|date("H\\hi") }}</td>
-					<td> {{schedule.amplitudeCoeff}}</td>
-					<td> {% if schedule.defaultForced %} Oui {% else %} Non {% endif %} </td>
-					<td> {{ schedule.amplitudeStartExtra|date("H\\hi") }}</td>
-					<td> {{ schedule.timeWork|date("H")~" heure(s) et "~schedule.timeWork|date("i")~"min"  }}</td>
+					<td>{{schedule.id}}</td>
+					<td>{{schedule.name}}</td>
+
 				</tr>
 			{% endfor %}
 		</tbody>
 	</table>
 
 
-
 {% endblock %}
 
 
 {% block javascripts %}
-
 	<script src="/js/schedule/index.js"></script>
-   <script src="/js/modules/dynamicPopup.js"></script>
-	<script> nameElement = "table#schedules tbody tr"; dynamicPopup(nameElement, "modal-area") </script>
+	<script src="/js/modules/dynamicPopup.js"></script>
+	<script>
+		nameElement = "table#schedules tbody tr";
+		dynamicPopup(nameElement, "modal-area")
+	</script>
 {% endblock %}

@@ -46,6 +46,7 @@ class PlanningFilterType extends AbstractType
                 $monday = date('w', $monday)==date('w') ? $monday+7*86400 : $monday;
                 $mindate = date("Y-m-d",$monday);
                 
+                
                 $minDate = new \DateTime($mindate);
                 $maxDate = new \DateTime($mindate." +6 days");
             }

@@ -7,17 +7,8 @@ use App\Entity\Employee;
 use App\Entity\Planning;
 use App\Entity\EmployeeView;
 
-use App\Form\EmployeeViewType ;
 use App\Form\PlanningFilterType;
 use App\Form\PlanningType;
-
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -27,15 +18,11 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 use Symfony\Component\Routing\Annotation\Route;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-/**
-* @IsGranted("ROLE_USER")
-*/
-class PlanningController extends AbstractController
-{
 
+class PlanningController extends AbstractController
+{   
 
     /**
      * @Route("/", name="home")
@@ -76,14 +63,13 @@ class PlanningController extends AbstractController
             $repoPlanning = $em->getRepository(Planning::class);
             // Run the query using where IN to find by multiple ids
             $plannings = $repoPlanning->createQueryBuilder("planning")
-                ->where('planning.employee = :id and  planning.dateSchedule >= :startDate AND  planning.dateSchedule <= :endDate')
+                ->where('planning.employee = :id and  planning.date >= :startDate AND  planning.date <= :endDate')
                 ->setParameter('id', $idEmployee)
                 ->setParameter('startDate', $formData["startDate"])
                 ->setParameter('endDate',  $formData["endDate"])
                 ->getQuery()
                 ->getResult();
-        
-         
+
             
             //Rendu (vue)
             return $this->render('planning/index.html.twig',[
@@ -124,11 +110,7 @@ class PlanningController extends AbstractController
             $planning->setLastUpdateUser( $currentUser); 
             $planning->setLastUpdateAt(new \DateTime("now",new \DateTimeZone('Indian/Mauritius'))) ; 
 
-            $tempDateTime=new \DateTime() ; 
-            date_timestamp_set($tempDateTime , (int)date_timestamp_get($planning->getAmplitudeEnd() ) - (int)date_timestamp_get($planning->getAmplitudeStart() ));
-
-            $planning->setAmplitude($tempDateTime  );
-             
+                 
             $data = $form->getData();
  
             $entityManager->persist($data);

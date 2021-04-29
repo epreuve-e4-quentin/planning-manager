@@ -1,79 +1,82 @@
-
 {% extends 'base.html.twig' %}
 
-{% block title %}Planning des employées {% endblock %}
+{% block title %}Planning des employées
+{% endblock %}
 {% block stylesheets %}
-   <link rel="stylesheet" href="/css/planning/index.css"> 
+	<link rel="stylesheet" href="/css/planning/index.css">
 {% endblock %}
-      
+
 {% block body %}
-   <div class="bg-light">
-      {{ form_start(formFilter, {'attr':{'id':'filter_planning_form' }, 'method': 'POST', 'action': path('planning' )} ) }}
-         <div class="row ">
-            <div class="col-2">{{ form_label(formFilter.employee) }}</div>
-            <div class="col-2">{{ form_label(formFilter.startDate) }}</div>
-            <div class="col-2">{{ form_label(formFilter.endDate) }}</div>
-            <div class="col-2">{{ form_label(formFilter.send) }} </div>
-            <div class="col-2"  id="extraButton" ></div>              
-         </div> 
-         <div class="row ">
-            <div class="col-2">{{ form_widget(formFilter.employee) }}</div>
-            <div class="col-2">{{ form_widget(formFilter.startDate) }}</div>
-            <div class="col-2">{{ form_widget(formFilter.endDate) }}</div>
-            <div class="col-2">{{ form_widget(formFilter.send) }} </div>
-            <div class="col-2">{{ form_widget(formFilter.currentWeek) }} </div>
-            <div class="col-2">{{ form_widget(formFilter.currentMonth) }} </div>
-            <div class="col-2"  id="extraButton" ></div> 
-            <div>  </div>             
-         </div>                  
-{{ form_end(formFilter) }}
-{% if test is defined %}
-   {{test}}
-{% endif %}
-   </div>
-	<div>
-		<BR>
-	</div>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+      </button>
+         <div class="collapse navbar-collapse" id="navbarColor02">
+           {{ form_start(formFilter, {'attr':{'id':'filter_planning_form' }, 'method': 'POST', 'action': path('planning' )} ) }}
+		<div class="row ">
+			<div class="col-3">{{ form_widget(formFilter.employee) }}</div>
+			<div class="col-3">{{ form_widget(formFilter.startDate) }} </div>
+		<div class="col-3"> {{ form_widget(formFilter.endDate) }}</div>
+			<div class="col-8" style="margin-top:20px">
+         {{ form_widget(formFilter.send) }}
+		
+		   {{ form_widget(formFilter.currentWeek) }}
+		
+			{{ form_widget(formFilter.currentMonth) }}
+			</div>
+		</div>
+		{{ form_end(formFilter) }}
+            <p id="extraButton"> </p>
+         </div>
+   </nav>
 
-    
-   {% if plannings is defined %}
-      <table class="table table-striped" id="plannings">
-         <thead class="thead-dark">
-            <tr>
-               <th scope="col">dateSchedule  <i class="fa fa-sort"></i></th>
-               <th scope="col">schedule  <i class="fa fa-sort"></i></th>
-               <th scope="col">amplitudeStart  <i class="fa fa-sort"></i></th>
-               <th scope="col">amplitudeEnd  <i class="fa fa-sort"></i></th>
-               <th scope="col">amplitude  <i class="fa fa-sort"></i></th>
-               <th scope="col">extraHour  <i class="fa fa-sort"></i></th>
-               <th scope="col">timework  <i class="fa fa-sort"></i></th>
-               <th scope="col">firstBreakPlace  <i class="fa fa-sort"></i></th>
-            </tr>
-         </thead>
-         <tbody>
-         {% for planning in plannings %}
-              <tr data-href="{{ path('planning_edit', {'id':planning.id}) }}">
-               <td>{{planning.dateSchedule|date('Y-m-d')}}</td>
-               <td> {{planning.schedule}}</td>
-               <td>{{planning.amplitudeStart|date('H\\hi')}}</td>
-               <td>{{planning.amplitudeEnd|date('H\\hi')}}</td>
-               <td>{{planning.amplitude|date('H\\hi')}}</td>
-               <td>{{planning.extraHour|date('H\\hi')}}</td>
-               <td> {{planning.timework|date("H\\hi")}}</td>
-               <td> {{planning.firstBreakPlace}}</td>
-            </tr>
-         {% endfor %}
-           
-         </tbody>
-      </table>
-  {% endif %}
+
+
+
+	{% if plannings is defined %}
+		<table class="table table-striped" id="plannings">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Date
+						<i class="fa fa-sort"></i>
+					</th>
+					<th scope="col">Horraire
+						<i class="fa fa-sort"></i>
+					</th>
+					<th scope="col">Vehicule
+						<i class="fa fa-sort"></i>
+					</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				{% for planning in plannings %}
+					<tr data-href="{{ path('planning_edit', {'id':planning.id}) }}">
+						<td>{{planning.date|date('Y-m-d')}}</td>
+						<td>
+							{{planning.schedule.name}}</td>
+						<td>
+							{% if planning.vehicle != NULL %}
+								{{planning.vehicle.name}}
+							{% else %}
+								Aucun
+							{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
+
+			</tbody>
+		</table>
+	{% endif %}
 {% endblock %}
-
-
 
 
 {% block javascripts %}
-   <script src="/js/planning/index.js"></script>
-   <script src="/js/modules/dynamicPopup.js"></script>
-	<script> nameElement = "table#plannings tbody tr"; dynamicPopup(nameElement, "modal-area") </script>
+	<script src="/js/planning/index.js"></script>
+	<script src="/js/modules/dynamicPopup.js"></script>
+	<script>
+		nameElement = "table#plannings tbody tr";
+dynamicPopup(nameElement, "modal-area")
+	</script>
 {% endblock %}

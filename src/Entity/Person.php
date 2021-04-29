@@ -48,6 +48,47 @@ class Person
      */
     private $lastUpdateAt = 'CURRENT_TIMESTAMP';
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getCreateAt(): ?\DateTimeInterface
+    {
+        return $this->createAt;
+    }
+
+    public function setCreateAt(\DateTimeInterface $createAt): self
+    {
+        $this->createAt = $createAt;
+
+        return $this;
+    }
+
+    public function getLastUpdateAt(): ?\DateTimeInterface
+    {
+        return $this->lastUpdateAt;
+    }
+
+    public function setLastUpdateAt(?\DateTimeInterface $lastUpdateAt): self
+    {
+        $this->lastUpdateAt = $lastUpdateAt;
+
+        return $this;
+    }
+
 
 
 

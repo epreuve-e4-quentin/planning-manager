@@ -52,5 +52,58 @@ class Schedule
      */
     private $lastUpdateUser;
 
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getCreateAt(): ?\DateTimeInterface
+    {
+        return $this->createAt;
+    }
+
+    public function setCreateAt(\DateTimeInterface $createAt): self
+    {
+        $this->createAt = $createAt;
+
+        return $this;
+    }
+
+    public function getLastUpdateAt(): ?\DateTimeInterface
+    {
+        return $this->lastUpdateAt;
+    }
+
+    public function setLastUpdateAt(?\DateTimeInterface $lastUpdateAt): self
+    {
+        $this->lastUpdateAt = $lastUpdateAt;
+
+        return $this;
+    }
+
+    public function getLastUpdateUser(): ?User
+    {
+        return $this->lastUpdateUser;
+    }
+
+    public function setLastUpdateUser(?User $lastUpdateUser): self
+    {
+        $this->lastUpdateUser = $lastUpdateUser;
+
+        return $this;
+    }
+
 
 }

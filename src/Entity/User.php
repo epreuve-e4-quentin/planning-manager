@@ -50,5 +50,41 @@ class User extends Person implements UserInterface
     }
     //---------------------------------------------
 
+    public function getRolesJson(): ?string
+    {
+        return $this->rolesJson;
+    }
+
+    public function setRolesJson(string $rolesJson): self
+    {
+        $this->rolesJson = $rolesJson;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
 
 }

@@ -43,86 +43,21 @@ class Vehicle
     private $createAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      *
-     * @ORM\Column(name="last_update_at", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
+     * @ORM\Column(name="last_update_at", type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
      */
     private $lastUpdateAt = 'CURRENT_TIMESTAMP';
 
     /**
-     * @var \Person
+     * @var \User
      *
-     * @ORM\ManyToOne(targetEntity="Person")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="last_update_user_id", referencedColumnName="id")
      * })
      */
     private $lastUpdateUser;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getImmat(): ?string
-    {
-        return $this->immat;
-    }
-
-    public function setImmat(?string $immat): self
-    {
-        $this->immat = $immat;
-
-        return $this;
-    }
-
-    public function getCreateAt(): ?\DateTimeInterface
-    {
-        return $this->createAt;
-    }
-
-    public function setCreateAt(\DateTimeInterface $createAt): self
-    {
-        $this->createAt = $createAt;
-
-        return $this;
-    }
-
-    public function getLastUpdateAt(): ?\DateTimeInterface
-    {
-        return $this->lastUpdateAt;
-    }
-
-    public function setLastUpdateAt(\DateTimeInterface $lastUpdateAt): self
-    {
-        $this->lastUpdateAt = $lastUpdateAt;
-
-        return $this;
-    }
-
-    public function getLastUpdateUser(): ?Person
-    {
-        return $this->lastUpdateUser;
-    }
-
-    public function setLastUpdateUser(?Person $lastUpdateUser): self
-    {
-        $this->lastUpdateUser = $lastUpdateUser;
-
-        return $this;
-    }
 
 
 }

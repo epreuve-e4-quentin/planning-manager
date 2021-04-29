@@ -47,21 +47,6 @@ class ScheduleController extends AbstractController
 
         if( $form->isSubmitted() && $form->isValid() ){ //Si le fourmulaire à été envoyé
 
-            //.......Application des données (BDD/Doctrine)........
-            //Calcul du temps de travail effectif si forcé n'est pas checké 
-            if ( ! $schedule->getdefaultForced() ) {
-                $secondes = (int)date_timestamp_get($schedule->getdefaultAmplitude()); 
-                $secondes = $secondes * $schedule->getamplitudeCoeff();
-                $tempDateTime=new \DateTime() ; 
-                date_timestamp_set($tempDateTime , $secondes);
-                $schedule->setTimeWork($tempDateTime);
-
-            } else {
-                $tempDateTime=new \DateTime() ; 
-                date_timestamp_set($tempDateTime ,0);
-                $schedule->setTimeWork($tempDateTime);
-            }
-
             $data = $form->getData();
             $entityManager->persist($data);
             $entityManager->flush();
@@ -100,19 +85,7 @@ class ScheduleController extends AbstractController
             $schedule->setLastUpdateUser( $currentUser); 
             $schedule->setLastUpdateAt(new \DateTime("now",new \DateTimeZone('Indian/Mauritius'))) ; 
             
-            //Calcul du temps de travail effectif si forcé n'est pas checké 
-            if ( ! $schedule->getdefaultForced() ) {
-                $secondes = (int)date_timestamp_get($schedule->getdefaultAmplitude()); 
-                $secondes = $secondes * $schedule->getamplitudeCoeff();
-                $tempDateTime=new \DateTime() ; 
-                date_timestamp_set($tempDateTime , $secondes);
-                $schedule->setTimeWork($tempDateTime);
-
-            } else {
-                $tempDateTime=new \DateTime() ; 
-                date_timestamp_set($tempDateTime ,0);
-                $schedule->setTimeWork($tempDateTime);
-            }
+           
 
             $em->persist($schedule);
             $em->flush();

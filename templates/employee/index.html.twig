@@ -8,6 +8,7 @@
 
 {% block body %}
 
+
    <nav class="navbar navbar-expand-lg navbar-light bg-light">
    <a class="navbar-brand" href="#"></a>
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +53,8 @@
                <td>{{ employee.email }}</td>
                <td>{% if employee.internal %} Oui {% else %} Non {% endif %}</td>
                <td>{{ employee.enterDate|date("d/m/Y") }}</td>
-               <td>{{ employee.endDate|date("d/m/Y") }}</td>
+               <td>{% if employee.endDate != NULL %} {{ employee.endDate|date("d/m/Y") }} {% else %} Non définis {% endif %}</td>
+
             </tr>
          {% endfor %}
          </tbody>

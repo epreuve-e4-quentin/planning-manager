@@ -22,16 +22,14 @@ class PlanningType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateSchedule', DateType::class, ["label"=>"Date" , 'required' => true])
-            ->add('amplitudeStart', TimeType::class, ["label"=>"Heure début amplitude" , 'required' => true])
-            ->add('amplitudeEnd', TimeType::class, ["label"=>"Heure début amplitude" , 'required' => true])
+            ->add('date', DateType::class, ["disabled" => true, "label"=>"Date" , 'required' => true])
             ->add('vehicle', EntityType::class , [
                 'class' => Vehicle::class,
-                'choice_label' => function(Vehicle $vehicle) {
-                    return sprintf('%d - %s %s', $vehicle->getId(), $vehicle->getName(),$vehicle->getImmat());
-                } ,
-                "label"=>"Nom"
+                "label"=>"Véhicule",
+                'placeholder' => 'Aucun',
+                'required' => false
             ])
+            ->add('schedule')
         ;
     }
 

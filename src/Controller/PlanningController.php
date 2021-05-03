@@ -95,12 +95,12 @@ class PlanningController extends AbstractController
     /**
     * @Route("/planning/{id}/edit", name="planning_edit", condition="request.headers.get('accept') matches '/json/' or context.getMethod() in ['POST']")
     */
-    public function editplanning(planning $planning, Request $request, EntityManagerInterface $entityManager): Response
+    public function editplanning(Planning $planning, Request $request, EntityManagerInterface $entityManager): Response
     {
          //------------Formulaire-----------
          $form = $this->createForm(PlanningType::class, $planning); //Création du formulaire
-
          $form->handleRequest($request); //Transfére des données dnas le formulaire
+         
          if( $form->isSubmitted() && $form->isValid()  ){ //Si le fourmulaire à été envoyé
  
              //.......Application des données (BDD/Doctrine)........
@@ -110,7 +110,6 @@ class PlanningController extends AbstractController
             $planning->setLastUpdateUser( $currentUser); 
             $planning->setLastUpdateAt(new \DateTime("now",new \DateTimeZone('Indian/Mauritius'))) ; 
 
-                 
             $data = $form->getData();
  
             $entityManager->persist($data);
@@ -120,8 +119,6 @@ class PlanningController extends AbstractController
              //................
          }
          //-----------------------------
- 
-
 
          //-------------RENDU---------------
          $render = $this->render('planning/edit_modal.html.twig', [

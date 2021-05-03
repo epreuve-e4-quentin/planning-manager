@@ -65,6 +65,10 @@ class Vehicle
         $this->createAt = new DateTime();
     }
 
+    public function __toString(){
+        return $this->immat." - ".$this->name;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Employee;
 use App\Form\EmployeeType;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -79,7 +80,7 @@ class EmployeeController extends AbstractController
 
         $form->handleRequest($request); //Tranfére des données dnas le formulaire
         if( $form->isSubmitted() && $form->isValid() ){ //Si le fourmulaire à été envoyé
-            
+            $employee->setCreateAt(new DateTime());
             //.......Application des données (BDD/Doctrine)........
             $em->persist($employee);
             $em->flush();

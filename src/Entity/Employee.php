@@ -83,6 +83,11 @@ class Employee extends Person
      */
     private $endDate;
 
+    public function __construct()
+    {
+        $this->createAt = new DateTime();
+    }
+
     public function getName(): ?string
     {
         return $this->name;

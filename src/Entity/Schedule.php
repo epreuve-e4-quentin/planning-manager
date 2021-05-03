@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,6 +52,11 @@ class Schedule
      * })
      */
     private $lastUpdateUser;
+
+    public function __construct()
+    {
+        $this->createAt = new \DateTime();
+    }
 
     public function getId(): ?int
     {

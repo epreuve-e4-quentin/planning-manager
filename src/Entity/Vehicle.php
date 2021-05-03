@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -40,7 +41,7 @@ class Vehicle
      *
      * @ORM\Column(name="create_at", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $createAt = 'CURRENT_TIMESTAMP';
+    private $createAt ;
 
     /**
      * @var \DateTime|null
@@ -58,6 +59,11 @@ class Vehicle
      * })
      */
     private $lastUpdateUser;
+
+    public function __construct()
+    {
+        $this->createAt = new DateTime();
+    }
 
     public function getId(): ?int
     {

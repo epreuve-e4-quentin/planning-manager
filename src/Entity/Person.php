@@ -39,14 +39,19 @@ class Person
      *
      * @ORM\Column(name="create_at", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $createAt = 'CURRENT_TIMESTAMP';
+    private $createAt  ;
 
     /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="last_update_at", type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $lastUpdateAt = 'CURRENT_TIMESTAMP';
+    private $lastUpdateAt ;
+
+    public function __construct()
+    {
+        $this->createAt = new \DateTime();
+    }
 
     public function getId(): ?int
     {

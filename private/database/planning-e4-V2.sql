@@ -37,7 +37,7 @@ INSERT INTO `employee` (`id`, `name`, `firstname`, `adress`, `zipcode`, `city`, 
 
 DROP TABLE IF EXISTS `person`;
 CREATE TABLE `person` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `create_at` datetime NOT NULL DEFAULT current_timestamp(),
   `last_update_at` datetime DEFAULT current_timestamp(),
@@ -46,7 +46,7 @@ CREATE TABLE `person` (
   PRIMARY KEY (`id`),
   KEY `last_update_user_id` (`last_update_user_id`),
   CONSTRAINT `person_ibfk_1` FOREIGN KEY (`last_update_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `person` (`id`, `email`, `create_at`, `last_update_at`, `last_update_user_id`, `person_type`) VALUES
 (1,	'quentin.h@lavarun.re',	'2021-02-27 11:36:55',	NULL,	NULL,	'user'),

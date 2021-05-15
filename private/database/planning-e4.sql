@@ -1,4 +1,4 @@
--- Adminer 4.7.8 MySQL dump
+-- Adminer 4.7.7 MySQL dump
 
 SET NAMES utf8;
 SET time_zone = '+00:00';
@@ -46,11 +46,11 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` (`id`, `name`, `firstname`, `adress`, `zipcode`, `city`, `phone`, `mobile_phone`, `internal`, `enter_date`, `end_date`) VALUES
 (11,	'Lebon',	'Jeremy',	'89 rue par la',	'97480',	'saint-joseph',	'06898568',	'64845486',	0,	'2021-04-23',	NULL),
-(12,	'Hoareau',	'Quentin',	'10 rue machin truc',	'97480',	'Saint-Joseph',	'0262382425',	'0692186498',	1,	'2021-09-12',	'2016-01-01'),
+(12,	'Hoareau',	'Quentin',	'10 rue machin truc',	'97480',	'Saint-Joseph',	'0262382425',	'0692186498',	1,	'2021-09-12',	'2024-01-01'),
 (13,	'Ramin',	'Emmanuel',	'39 rue des la tête de turc',	'97429',	'Petit-Ile',	'0262382425',	'0692896498',	0,	'2020-09-12',	NULL),
 (14,	'Bigot',	'Andréa',	'26 avenue des champs',	'97410',	'Vincendo',	'0262382425',	'0692286498',	1,	'2021-06-08',	NULL),
-(15,	'Lauret',	'Ryan',	'12 rue berlango',	'97425',	'saint-marie',	'0692878787',	NULL,	1,	'2022-06-15',	'2024-09-17');
-
+(15,	'Lauret',	'Ryan',	'12 rue berlango',	'97425',	'saint-marie',	'0692878787',	'098568418',	1,	'2022-06-15',	'2024-09-17')
+ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `name` = VALUES(`name`), `firstname` = VALUES(`firstname`), `adress` = VALUES(`adress`), `zipcode` = VALUES(`zipcode`), `city` = VALUES(`city`), `phone` = VALUES(`phone`), `mobile_phone` = VALUES(`mobile_phone`), `internal` = VALUES(`internal`), `enter_date` = VALUES(`enter_date`), `end_date` = VALUES(`end_date`);
 
 
 DROP TABLE IF EXISTS `person`;
@@ -71,10 +71,11 @@ INSERT INTO `person` (`id`, `email`, `create_at`, `last_update_at`, `last_update
 (2,	'emmanuel.ramin@lavarun.re',	'2021-02-27 11:36:55',	NULL,	NULL,	'user'),
 (3,	'simon@simon.fr',	'2021-03-06 04:20:49',	'2021-03-06 04:20:49',	1,	'person'),
 (11,	'jerem@tutu.fr',	'2021-03-05 12:42:47',	'2021-03-06 05:06:09',	1,	'employee'),
-(12,	'quentinhoareau@gmail.com',	'2021-03-06 03:11:47',	NULL,	NULL,	'employee'),
+(12,	'quentinhoareau@gmail.com',	'2021-03-06 03:11:47',	'2021-05-15 21:03:08',	1,	'employee'),
 (13,	'emmanuel.ramin@lavarun.re',	'2021-03-06 03:29:44',	'2021-03-06 05:33:53',	2,	'employee'),
 (14,	'tu@tu.tu',	'2021-03-06 04:19:00',	NULL,	NULL,	'employee'),
-(15,	'jiji.ji@gmail.com',	'2021-04-29 14:22:59',	NULL,	NULL,	'employee');
+(15,	'riri.lolo@gmail.com',	'2021-04-29 14:22:59',	'2021-05-15 21:03:58',	1,	'employee')
+ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `email` = VALUES(`email`), `create_at` = VALUES(`create_at`), `last_update_at` = VALUES(`last_update_at`), `last_update_user_id` = VALUES(`last_update_user_id`), `person_type` = VALUES(`person_type`);
 
 DROP TABLE IF EXISTS `planning`;
 CREATE TABLE `planning` (
@@ -109,8 +110,8 @@ INSERT INTO `planning` (`id`, `date`, `employee_id`, `schedule_id`, `vehicle_id`
 (264960,	'2021-05-07',	11,	8,	NULL,	'2021-04-29 06:59:31',	'2021-04-29 09:57:29',	2),
 (264961,	'2021-05-08',	11,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
 (264962,	'2021-05-09',	11,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
-(264963,	'2021-05-10',	11,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
-(264964,	'2021-05-11',	11,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
+(264963,	'2021-05-10',	11,	1,	1,	'2021-04-29 06:59:31',	'2021-05-15 21:25:39',	1),
+(264964,	'2021-05-11',	11,	1,	27,	'2021-04-29 06:59:31',	'2021-05-15 21:24:31',	1),
 (264965,	'2021-05-12',	11,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
 (264966,	'2021-05-13',	11,	1,	27,	'2021-04-29 06:59:31',	'2021-04-29 10:01:00',	NULL),
 (264967,	'2021-05-14',	11,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
@@ -4008,7 +4009,7 @@ INSERT INTO `planning` (`id`, `date`, `employee_id`, `schedule_id`, `vehicle_id`
 (268859,	'2021-05-07',	12,	8,	NULL,	'2021-04-29 06:59:31',	'2021-04-29 09:58:43',	2),
 (268860,	'2021-05-08',	12,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
 (268861,	'2021-05-09',	12,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
-(268862,	'2021-05-10',	12,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
+(268862,	'2021-05-10',	12,	1,	27,	'2021-04-29 06:59:31',	'2021-05-15 21:24:54',	1),
 (268863,	'2021-05-11',	12,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
 (268864,	'2021-05-12',	12,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
 (268865,	'2021-05-13',	12,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
@@ -7907,7 +7908,7 @@ INSERT INTO `planning` (`id`, `date`, `employee_id`, `schedule_id`, `vehicle_id`
 (272758,	'2021-05-07',	13,	8,	NULL,	'2021-04-29 06:59:31',	'2021-04-29 09:58:43',	2),
 (272759,	'2021-05-08',	13,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
 (272760,	'2021-05-09',	13,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
-(272761,	'2021-05-10',	13,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
+(272761,	'2021-05-10',	13,	1,	1,	'2021-04-29 06:59:31',	'2021-05-15 21:25:27',	1),
 (272762,	'2021-05-11',	13,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
 (272763,	'2021-05-12',	13,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
 (272764,	'2021-05-13',	13,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
@@ -14324,12 +14325,13 @@ INSERT INTO `planning` (`id`, `date`, `employee_id`, `schedule_id`, `vehicle_id`
 (279175,	'2028-03-29',	14,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
 (279176,	'2028-03-30',	14,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
 (279177,	'2028-03-31',	14,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
-(279178,	'2028-04-01',	14,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
+(279178,	'2028-04-01',	14,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL)
+ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `date` = VALUES(`date`), `employee_id` = VALUES(`employee_id`), `schedule_id` = VALUES(`schedule_id`), `vehicle_id` = VALUES(`vehicle_id`), `create_at` = VALUES(`create_at`), `last_update_at` = VALUES(`last_update_at`), `last_update_user_id` = VALUES(`last_update_user_id`);
+INSERT INTO `planning` (`id`, `date`, `employee_id`, `schedule_id`, `vehicle_id`, `create_at`, `last_update_at`, `last_update_user_id`) VALUES
 (279179,	'2028-04-02',	14,	1,	NULL,	'2021-04-29 06:59:31',	NULL,	NULL),
 (279180,	'2028-04-03',	14,	1,	7,	'2021-04-29 06:59:31',	'2021-04-29 10:03:10',	NULL),
 (279181,	'2028-04-04',	14,	1,	7,	'2021-04-29 06:59:31',	'2021-04-29 10:03:10',	NULL),
-(279182,	'2028-04-05',	14,	1,	7,	'2021-04-29 06:59:31',	'2021-04-29 10:03:10',	NULL);
-INSERT INTO `planning` (`id`, `date`, `employee_id`, `schedule_id`, `vehicle_id`, `create_at`, `last_update_at`, `last_update_user_id`) VALUES
+(279182,	'2028-04-05',	14,	1,	7,	'2021-04-29 06:59:31',	'2021-04-29 10:03:10',	NULL),
 (279183,	'2028-04-06',	14,	1,	7,	'2021-04-29 06:59:31',	'2021-04-29 10:03:10',	NULL),
 (279184,	'2028-04-07',	14,	1,	7,	'2021-04-29 06:59:31',	'2021-04-29 10:03:10',	NULL),
 (279185,	'2028-04-08',	14,	1,	7,	'2021-04-29 06:59:31',	'2021-04-29 10:03:10',	NULL),
@@ -15707,7 +15709,7 @@ INSERT INTO `planning` (`id`, `date`, `employee_id`, `schedule_id`, `vehicle_id`
 (280557,	'2021-05-08',	15,	1,	NULL,	'2021-04-29 16:22:59',	'2021-04-29 16:22:59',	NULL),
 (280558,	'2021-05-09',	15,	1,	NULL,	'2021-04-29 16:22:59',	'2021-04-29 16:22:59',	NULL),
 (280559,	'2021-05-10',	15,	1,	NULL,	'2021-04-29 16:22:59',	'2021-04-29 16:22:59',	NULL),
-(280560,	'2021-05-11',	15,	1,	NULL,	'2021-04-29 16:22:59',	'2021-04-29 16:22:59',	NULL),
+(280560,	'2021-05-11',	15,	1,	1,	'2021-04-29 16:22:59',	'2021-05-15 21:47:06',	1),
 (280561,	'2021-05-12',	15,	1,	NULL,	'2021-04-29 16:22:59',	'2021-04-29 16:22:59',	NULL),
 (280562,	'2021-05-13',	15,	1,	NULL,	'2021-04-29 16:22:59',	'2021-04-29 16:22:59',	NULL),
 (280563,	'2021-05-14',	15,	1,	NULL,	'2021-04-29 16:22:59',	'2021-04-29 16:22:59',	NULL),
@@ -19593,7 +19595,8 @@ INSERT INTO `planning` (`id`, `date`, `employee_id`, `schedule_id`, `vehicle_id`
 (284443,	'2031-12-28',	15,	1,	NULL,	'2021-04-29 16:22:59',	'2021-04-29 16:22:59',	NULL),
 (284444,	'2031-12-29',	15,	1,	NULL,	'2021-04-29 16:22:59',	'2021-04-29 16:22:59',	NULL),
 (284445,	'2031-12-30',	15,	1,	NULL,	'2021-04-29 16:22:59',	'2021-04-29 16:22:59',	NULL),
-(284446,	'2031-12-31',	15,	1,	NULL,	'2021-04-29 16:22:59',	'2021-04-29 16:22:59',	NULL);
+(284446,	'2031-12-31',	15,	1,	NULL,	'2021-04-29 16:22:59',	'2021-04-29 16:22:59',	NULL)
+ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `date` = VALUES(`date`), `employee_id` = VALUES(`employee_id`), `schedule_id` = VALUES(`schedule_id`), `vehicle_id` = VALUES(`vehicle_id`), `create_at` = VALUES(`create_at`), `last_update_at` = VALUES(`last_update_at`), `last_update_user_id` = VALUES(`last_update_user_id`);
 
 DELIMITER ;;
 
@@ -19635,7 +19638,8 @@ INSERT INTO `schedule` (`id`, `name`, `create_at`, `last_update_at`, `last_updat
 (1,	'Service',	'2021-02-27 11:36:55',	'2021-04-23 13:49:39',	1),
 (8,	'Congé',	'2021-03-07 06:40:47',	'2021-04-23 13:25:58',	1),
 (9,	'Maladie',	'2021-03-07 06:41:07',	'2021-04-23 13:25:58',	1),
-(10,	'Repos',	'2021-03-07 06:43:16',	'2021-04-23 13:25:58',	1);
+(10,	'Repos',	'2021-03-07 06:43:16',	'2021-04-23 13:25:58',	1)
+ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `name` = VALUES(`name`), `create_at` = VALUES(`create_at`), `last_update_at` = VALUES(`last_update_at`), `last_update_user_id` = VALUES(`last_update_user_id`);
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -19649,8 +19653,9 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `user` (`id`, `roles_json`, `password`, `username`) VALUES
-(1,	'[\"ROLE_ADMIN\"]',	'$2y$10$BAgg6OnHQt6gvoCSBIMqieMj6TUrQG.K.6bkfKnAL/19SGfaNi89.',	'Quentin'),
-(2,	'[\"ROLE_ADMIN\"]',	'$2y$10$BAgg6OnHQt6gvoCSBIMqieMj6TUrQG.K.6bkfKnAL/19SGfaNi89.',	'Manu');
+(1,	'[\"ROLE_ADMIN\"]',	'$2y$10$iRG2T2LvKeCF4nW3kCGomOm8LJ3wEj1BE.zHsu9OBHgA3hXLMMEHO',	'Quentin'),
+(2,	'[\"ROLE_ADMIN\"]',	'$2y$10$iRG2T2LvKeCF4nW3kCGomOm8LJ3wEj1BE.zHsu9OBHgA3hXLMMEHO',	'Manu')
+ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `roles_json` = VALUES(`roles_json`), `password` = VALUES(`password`), `username` = VALUES(`username`);
 
 DROP TABLE IF EXISTS `vehicle`;
 CREATE TABLE `vehicle` (
@@ -19667,15 +19672,17 @@ CREATE TABLE `vehicle` (
   KEY `idx_vehicle_immat` (`immat`),
   KEY `vehicle_ibfk_1` (`last_update_user_id`),
   CONSTRAINT `vehicle_ibfk_2` FOREIGN KEY (`last_update_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `vehicle` (`id`, `name`, `immat`, `nb_place`, `create_at`, `last_update_at`, `last_update_user_id`) VALUES
-(1,	'Ambulance Mercedes 2012',	'AZ-879-C3',	2,	'2021-02-27 11:36:55',	'2021-05-03 14:03:51',	2),
+(1,	'Ambulance Mercedes 2012',	'AZ-879-C3',	2,	'2021-02-27 11:36:55',	'2021-05-15 21:50:19',	1),
 (7,	'Ambulance Mazda Double X',	'BX-966-AP',	3,	'2021-02-28 16:48:17',	'2021-05-03 12:53:09',	1),
-(27,	'Ambulance Peugeot C3',	'C3-78C-A5',	8,	'2021-03-11 11:28:37',	'2021-05-03 12:53:09',	1),
-(28,	'test',	'A84Z6F84GE',	6,	'2021-04-29 14:25:48',	'2021-05-03 12:53:09',	NULL);
+(27,	'Ambulance Peugeot C3',	'C3-78C-A5',	8,	'2021-03-11 11:28:37',	'2021-05-03 12:53:09',	1)
+ON DUPLICATE KEY UPDATE `id` = VALUES(`id`), `name` = VALUES(`name`), `immat` = VALUES(`immat`), `nb_place` = VALUES(`nb_place`), `create_at` = VALUES(`create_at`), `last_update_at` = VALUES(`last_update_at`), `last_update_user_id` = VALUES(`last_update_user_id`);
 
--- 2021-05-15 15:46:04
+
+
+
 DELIMITER ;;
 
 CREATE TRIGGER `insert_scheduleplanning` AFTER INSERT ON `employee` FOR EACH ROW
@@ -19698,3 +19705,5 @@ begin
 end;;
 
 DELIMITER ;
+
+-- 2021-05-15 17:53:25

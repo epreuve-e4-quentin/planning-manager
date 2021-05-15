@@ -1,6 +1,6 @@
 {% extends 'modules/form_modal.html.twig' %}
 
-{% block title %} Modification  ({{planning.id}}){% endblock %}
+{% block title %} Modification du  {{ planning.date|date('d/m/Y')}} pour <b> {{planning.employee.name~" "~planning.employee.firstname}}</b> {% endblock %}
 
 {% block form %} 
    {{ form_start(form, {'attr':{'id':'edit_planning_form'}, 'method': 'POST', 'action': path('planning_edit', {'id': planning.id} )} ) }}

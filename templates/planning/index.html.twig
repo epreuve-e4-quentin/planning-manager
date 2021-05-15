@@ -52,7 +52,7 @@
 			<tbody>
 				{% for planning in plannings %}
 					<tr data-href="{{ path('planning_edit', {'id':planning.id}) }}">
-						<td>{{planning.date|date('Y-m-d')}}</td>
+						<td>{{ planning.date|date('d/m/Y')}}</td>
 						<td>
 							{{planning.schedule.name}}</td>
 						<td>

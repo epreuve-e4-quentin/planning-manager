@@ -4,8 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}Welcome!
-			{% endblock %}
+			{% block title %} {{website_name}} {% endblock %}
 		</title>
 		{% block stylesheets %}{% endblock %}
 	
@@ -26,8 +25,8 @@
 	<body>
 	<div id="body">
 	
-		{% include '/partials/header.html.twig' %}
-		{% include '/partials/nav.html.twig' %}
+		{% include 'partials/header.html.twig' %}
+		{% include 'partials/nav.html.twig' %}
 
 		<div id="mainContent"> 
 			{% block body %}{% endblock %}

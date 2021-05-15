@@ -60,6 +60,13 @@ class Vehicle
      */
     private $lastUpdateUser;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nb_place", type="integer", nullable=false)
+     */
+    private $nbPlace;
+
     public function __construct()
     {
         $this->createAt = new DateTime();
@@ -130,6 +137,18 @@ class Vehicle
     public function setLastUpdateUser(?User $lastUpdateUser): self
     {
         $this->lastUpdateUser = $lastUpdateUser;
+
+        return $this;
+    }
+
+    public function getNbPlace(): ?int
+    {
+        return $this->nbPlace;
+    }
+
+    public function setNbPlace(int $nbPlace): self
+    {
+        $this->nbPlace = $nbPlace;
 
         return $this;
     }

@@ -36,6 +36,7 @@ class User extends Person implements UserInterface
     private $username;
 
 
+
     
     //-------------User Interface------------------
     public function eraseCredentials()
@@ -85,6 +86,7 @@ class User extends Person implements UserInterface
 
         return $this;
     }
+
 
 
 }

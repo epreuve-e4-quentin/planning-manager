@@ -1,7 +1,7 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Creation d'un horaire{% endblock %}
+{% block title %}Creation d'un type horaire{% endblock %}
 {% block stylesheets %}
    <link rel="stylesheet" href="/css/schedule/add.css"> 
 {% endblock %}
@@ -9,10 +9,10 @@
 {% block body %}
         
    {{ form_start(form, {'attr':{'id':'add_schedule_form', 'class': 'form_add' }, 'method': 'POST', 'action': path('schedule_add' )} ) }}
-      {% include '/schedule/form.html.twig' %}
+      {% include 'schedule/form.html.twig' %}
       <button class="btn btn-primary" type="submit">Ajouter</button>
       <a href="{{path('schedule')}}">
-         <button type="button" class="btn btn-link">Retourner à la liste des Horaires</button>         
+         <button type="button" class="btn btn-link">Retourner à la liste</button>         
       </a> 
    {{ form_end(form) }}
     

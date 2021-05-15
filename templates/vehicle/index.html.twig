@@ -1,4 +1,4 @@
-{% extends '/base.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}Gestion des véhicules {% endblock %}
 {% block stylesheets %}
@@ -31,6 +31,8 @@
             <tr>
                <th scope="col"> Nom </th>
                <th scope="col"> Immatriculation </th>
+               <th scope="col"> Nombre de place </th>
+
             </tr>
          </thead>
          <tbody>
@@ -38,6 +40,8 @@
               <tr data-href="{{ path('vehicle_edit', {'id':vehicle.id}) }}">
                <td>{{vehicle.name}}</td>
                <td> {{vehicle.immat}}</td>
+               <td> {{vehicle.nbPlace}}</td>
+
             </tr>
          {% endfor %}
            

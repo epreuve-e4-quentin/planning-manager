@@ -9,9 +9,10 @@ use App\Entity\EmployeeView;
 
 use App\Form\PlanningFilterType;
 use App\Form\PlanningType;
-
+use Doctrine\DBAL\DBALException;
+use Doctrine\DBAL\Driver\DriverException;
 use Doctrine\ORM\EntityManagerInterface;
-
+use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -111,12 +112,25 @@ class PlanningController extends AbstractController
             $planning->setLastUpdateAt(new \DateTime("now",new \DateTimeZone('Indian/Mauritius'))) ; 
 
             $data = $form->getData();
- 
-            $entityManager->persist($data);
-            $entityManager->flush();
- 
-             return $this->json(["htmlContent" => "<script> location.replace('/planning') ; </script>"], 200) ;
-             //................
+            
+            try {
+                $entityManager->persist($data);
+                $entityManager->flush();
+                return $this->json(["htmlContent" => "<script> location.replace('/planning') ; </script>"], 200) ;
+            } catch (DBALException $dbException) {
+                
+                //Erreur DB
+                $message = $dbException->getPrevious()->errorInfo["2"] ;
+                $render = $this->render('modules/message_modal.html.twig', [
+                    'status' => 400,
+                    'title' => "Erreur",
+                    'message' => $message
+                ]);
+                    
+                return $this->json(["htmlContent" => $render->getContent()], 200) ;
+            }
+            
+           
          }
          //-----------------------------
 

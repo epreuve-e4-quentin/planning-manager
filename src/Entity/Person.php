@@ -25,28 +25,38 @@ class Person
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
-    private $email;
+    protected $email;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="create_at", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $createAt  ;
+    protected $createAt  ;
 
     /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="last_update_at", type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
      */
-    private $lastUpdateAt ;
+    protected $lastUpdateAt ;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="last_update_user_id", referencedColumnName="id")
+     * })
+     */
+    private $lastUpdateUser;
 
     public function __construct()
     {
@@ -90,6 +100,18 @@ class Person
     public function setLastUpdateAt(?\DateTimeInterface $lastUpdateAt): self
     {
         $this->lastUpdateAt = $lastUpdateAt;
+
+        return $this;
+    }
+
+    public function getLastUpdateUser(): ?User
+    {
+        return $this->lastUpdateUser;
+    }
+
+    public function setLastUpdateUser(?User $lastUpdateUser): self
+    {
+        $this->lastUpdateUser = $lastUpdateUser;
 
         return $this;
     }

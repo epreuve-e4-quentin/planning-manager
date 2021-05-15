@@ -1,10 +1,10 @@
-{% extends '/modules/form_modal.html.twig' %}
+{% extends 'modules/form_modal.html.twig' %}
 
 {% block title %} {{employee.name}} {{employee.firstname}} {% endblock %}
 
 {% block form %} 
    {{ form_start(form, {'attr':{'id':'edit_employee_form', 'class': 'form_edit' }, 'method': 'POST', 'action': path('employee_edit', {'id':employee.id} )} ) }}
-      {% include '/employee/form.html.twig' %}  
+      {% include 'employee/form.html.twig' %}  
    {{ form_end(form) }}
    <script>$("#popup").modal('show'); //Afficher le modal</script>
 {% endblock %}

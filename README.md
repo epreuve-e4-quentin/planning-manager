@@ -13,7 +13,6 @@ _(N'oubliez pas de configurer les identifiants de connexion à la base de donné
     - ".gitattributes"
     - "gitignore"
     - ".github"
-    - "private"
     
 # A savoir
 ...

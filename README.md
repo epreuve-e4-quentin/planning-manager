@@ -3,7 +3,7 @@ Planning manager, school project. Application intranet sécurisé pour pouvoir g
 
 # Installation / Utilisation 
 
-1) Téléchargez la  [dernière version](https://github.com/epreuve-e4-quentin/planning-manager/releases/latest) testé du projet , et glissez les fichiers dans un dossier où le php est actif (ex: htdocs ou www)
+1) Téléchargez la  [dernière version](https://github.com/epreuve-e4-quentin/planning-manager/releases/latest) testé du projet , et glissez les fichiers du dossier dans la racine du serveur apache (où le php est actif). Exemple de racine de serveur apache : 'htdocs' ou 'www'.
     
 2) Pour finir, importez la base de données (MySQL) : 
 [databases.sql](https://raw.githubusercontent.com/epreuve-e4-quentin/planning-manager/main/private/database/planning-e4.sql)

@@ -15,4 +15,4 @@ _(N'oubliez pas de configurer les identifiants de connexion à la base de donné
     - ".github"
     
 # A savoir
-...
+- Il est important que les fichiers/dossier du site se trouvent à la racine de votre serveur (Ex: https://localhost/) pour le bon fonctionnement des ressources (scripts, styles...) et non pas dans un sous dossier de votre serveur (Ex: https://localhost/mon_dossier_perso)

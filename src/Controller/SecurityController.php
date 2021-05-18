@@ -23,8 +23,14 @@ class SecurityController extends AbstractController
      * @Route("/login", name="security_login")
      */
     public function login(): Response
-    {
-        return $this->render('security/login.html.twig', []); //Rendu sur la page login
+    {   
+        if($this->getUser() === null){
+            return $this->render('security/login.html.twig', []); //Rendu sur la page login
+        }
+        else{
+            return $this->redirectToRoute('employee') ;
+        }
+        
     }
 
     /**

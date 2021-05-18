@@ -2,20 +2,54 @@
 
 {% block title %} {{website_name}} - Se connecter {% endblock %}
 
+{% block stylesheet %}
+<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
+<link href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css" rel="stylesheet">
+{% endblock %}
+
+		{% block header %}{% endblock %}
+
+
+		{% block nav %}{% endblock %}
+
 
 {% block body %}
-	<h1>Se connecter sur le site</h1>
 
-	<form name="login" method="post" action="{{ path('security_login') }}">
-		<div class="form-group">
-			<label for="login__username">Nom Utilisateur</label>
-			<input type="text" id="username" name="_username" placeholder="Votre Nom d'utilisateur" class="form-control"></div>
-		<div class="form-group">
-			<label for="login__password" class="required">Mot de passe</label>
-			<input type="password" id="login__password" name="_password" required="required" placeholder="Mot de passe" class="form-control"></div>
-		<button type="submit" class="btn btn-success">Se connecter !</button>
+<div class="container" style="max-width:400px">
 
-	</form>
+    <form class="form-signin" name="login" method="POST" action="{{ path('security_login') }}">
+      <div class="text-center mb-4">
+        <span id="logo" style="font-size:4rem">RunAmbulance</span>
+        <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
+        <p> Vous allez vous connectez à l'espace de gestion de l'application.</p>
+      </div>
+
+      <div class="form-label-group">
+			<input type="text" id="username" class="form-control" name="_username" placeholder="Votre Nom d'utilisateur" class="form-control" required autofocus>
+
+        <label for="inputEmail">Nom d'utiliasteur</label>
+      </div>
+
+      <div class="form-label-group">
+		  		<input type="password" class="form-control" id="login__password" name="_password" required placeholder="Mot de passe" class="form-control">
+
+        <label for="inputPassword">Mot de passe</label>
+      </div>
+
+      <button class="btn btn-lg btn-primary btn-block" name="submit" type="submit">Se connecter</button>
+   
+      <p class="mt-5 mb-3 text-muted text-center">&copy; 2020-2021 </p>
+    </form>
+</div>
+
+
+
+
+
+
+
+
 
 
 {% endblock %}
+

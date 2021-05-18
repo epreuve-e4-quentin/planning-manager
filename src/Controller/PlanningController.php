@@ -26,8 +26,6 @@ class PlanningController extends AbstractController
 {   
 
     /**
-     * @Route("/", name="home")
-     * @Route("/planning/after", name="planning_after")
      * @Route("/planning", name="planning")
      * 
      */

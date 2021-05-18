@@ -38,8 +38,7 @@
                <th scope="col"> Téléphone mobile </th>
                <th scope="col"> Email </th>
                <th scope="col"> Interne </th>
-               <th scope="col"> Date d'entrée </th>
-               <th scope="col"> Date de fin </th>
+               <th scope="col"> Type de contrat </th>
             </tr>
          </thead>
          <tbody>
@@ -52,8 +51,7 @@
                <td>{{ employee.mobilePhone }}</td>
                <td>{{ employee.email }}</td>
                <td>{% if employee.internal %} Oui {% else %} Non {% endif %}</td>
-               <td>{{ employee.enterDate|date("d/m/Y") }}</td>
-               <td>{% if employee.endDate != NULL %} {{ employee.endDate|date("d/m/Y") }} {% else %} Non définis {% endif %}</td>
+               <td>{% if employee.endDate != NULL %} CDD <small>(Du {{ employee.enterDate|date("d/m/Y")~" au "~employee.endDate|date("d/m/Y") }})</small> {% else %} CDI <small> (Du {{ employee.enterDate|date("d/m/Y")}}  au --/--/----)</small> {% endif %}</td>
 
             </tr>
          {% endfor %}

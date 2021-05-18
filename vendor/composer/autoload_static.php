@@ -1649,6 +1649,7 @@ class ComposerStaticInit5c0d2b4bcb44e0878f94d600970f9198
         'Doctrine\\Persistence\\Mapping\\Driver\\StaticPHPDriver' => __DIR__ . '/..' . '/doctrine/persistence/lib/Doctrine/Persistence/Mapping/Driver/StaticPHPDriver.php',
         'Doctrine\\Persistence\\Mapping\\Driver\\SymfonyFileLocator' => __DIR__ . '/..' . '/doctrine/persistence/lib/Doctrine/Persistence/Mapping/Driver/SymfonyFileLocator.php',
         'Doctrine\\Persistence\\Mapping\\MappingException' => __DIR__ . '/..' . '/doctrine/persistence/lib/Doctrine/Persistence/Mapping/MappingException.php',
+        'Doctrine\\Persistence\\Mapping\\ProxyClassNameResolver' => __DIR__ . '/..' . '/doctrine/persistence/lib/Doctrine/Persistence/Mapping/ProxyClassNameResolver.php',
         'Doctrine\\Persistence\\Mapping\\ReflectionService' => __DIR__ . '/..' . '/doctrine/persistence/lib/Doctrine/Persistence/Mapping/ReflectionService.php',
         'Doctrine\\Persistence\\Mapping\\RuntimeReflectionService' => __DIR__ . '/..' . '/doctrine/persistence/lib/Doctrine/Persistence/Mapping/RuntimeReflectionService.php',
         'Doctrine\\Persistence\\Mapping\\StaticReflectionService' => __DIR__ . '/..' . '/doctrine/persistence/lib/Doctrine/Persistence/Mapping/StaticReflectionService.php',

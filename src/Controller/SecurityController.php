@@ -19,6 +19,7 @@ class SecurityController extends AbstractController
 {
 
     /**
+     * @Route("/", name="index")
      * @Route("/login", name="security_login")
      */
     public function login(): Response

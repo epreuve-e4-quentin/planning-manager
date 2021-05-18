@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '3e1c13a4c4291fd2c229e95c06b5f3b0d847bebd',
+    'reference' => '6a63bba1de1a1f9c6e4a0c7046e9e3526ddbee3e',
     'name' => '__root__',
   ),
   'versions' => 
@@ -42,7 +42,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '3e1c13a4c4291fd2c229e95c06b5f3b0d847bebd',
+      'reference' => '6a63bba1de1a1f9c6e4a0c7046e9e3526ddbee3e',
     ),
     'composer/package-versions-deprecated' => 
     array (
@@ -55,12 +55,12 @@ private static $installed = array (
     ),
     'doctrine/annotations' => 
     array (
-      'pretty_version' => '1.13.0',
-      'version' => '1.13.0.0',
+      'pretty_version' => '1.13.1',
+      'version' => '1.13.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '03cb2123a67d4be806554fe670d0adc298199808',
+      'reference' => 'e6e7b7d5b45a2f2abc5460cc6396480b2b1d321f',
     ),
     'doctrine/cache' => 
     array (
@@ -181,12 +181,12 @@ private static $installed = array (
     ),
     'doctrine/persistence' => 
     array (
-      'pretty_version' => '2.1.0',
-      'version' => '2.1.0.0',
+      'pretty_version' => '2.2.0',
+      'version' => '2.2.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '9899c16934053880876b920a3b8b02ed2337ac1d',
+      'reference' => '08d3e6e666de85c7748fa27bfd63bb15ac29eab2',
     ),
     'doctrine/sql-formatter' => 
     array (
@@ -1089,12 +1089,12 @@ private static $installed = array (
     ),
     'twig/twig' => 
     array (
-      'pretty_version' => 'v3.3.1',
-      'version' => '3.3.1.0',
+      'pretty_version' => 'v3.3.2',
+      'version' => '3.3.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'ac44433c49892bf28d47c852b19832f3823bd351',
+      'reference' => '21578f00e83d4a82ecfa3d50752b609f13de6790',
     ),
     'webmozart/assert' => 
     array (

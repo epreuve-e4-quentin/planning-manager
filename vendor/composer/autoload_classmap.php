@@ -1092,6 +1092,7 @@ return array(
     'Doctrine\\Persistence\\Mapping\\Driver\\StaticPHPDriver' => $vendorDir . '/doctrine/persistence/lib/Doctrine/Persistence/Mapping/Driver/StaticPHPDriver.php',
     'Doctrine\\Persistence\\Mapping\\Driver\\SymfonyFileLocator' => $vendorDir . '/doctrine/persistence/lib/Doctrine/Persistence/Mapping/Driver/SymfonyFileLocator.php',
     'Doctrine\\Persistence\\Mapping\\MappingException' => $vendorDir . '/doctrine/persistence/lib/Doctrine/Persistence/Mapping/MappingException.php',
+    'Doctrine\\Persistence\\Mapping\\ProxyClassNameResolver' => $vendorDir . '/doctrine/persistence/lib/Doctrine/Persistence/Mapping/ProxyClassNameResolver.php',
     'Doctrine\\Persistence\\Mapping\\ReflectionService' => $vendorDir . '/doctrine/persistence/lib/Doctrine/Persistence/Mapping/ReflectionService.php',
     'Doctrine\\Persistence\\Mapping\\RuntimeReflectionService' => $vendorDir . '/doctrine/persistence/lib/Doctrine/Persistence/Mapping/RuntimeReflectionService.php',
     'Doctrine\\Persistence\\Mapping\\StaticReflectionService' => $vendorDir . '/doctrine/persistence/lib/Doctrine/Persistence/Mapping/StaticReflectionService.php',

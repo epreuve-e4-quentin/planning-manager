@@ -15,8 +15,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class EmployeeController extends AbstractController
 {
     /**
-     * @Route("/", name="index")
-     * @Route("/home", name="home")
      * @Route("/employee", name="employee")
      */
     public function index(EntityManagerInterface $em): Response

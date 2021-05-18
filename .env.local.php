@@ -5,5 +5,5 @@
 return array (
   'APP_ENV' => 'prod',
   'APP_SECRET' => 'fa3258c0f8af93c758717ff36fb654eb',
-  'DATABASE_URL' => 'mysql://root:root@127.0.0.1:3306/planning-e4',
+  'DATABASE_URL' => 'mysql://root:root@127.0.0.1:3306/planning-manager-e4',
 );

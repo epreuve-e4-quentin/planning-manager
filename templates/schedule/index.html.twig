@@ -39,8 +39,8 @@
 		<tbody>
 			{% for schedule in schedules %}
 				<tr data-href="{{ path('schedule_edit', {'id':schedule.id}) }}">
-					<td>{{schedule.id}}</td>
-					<td>{{schedule.name}}</td>
+					<td data-label="Id">{{schedule.id}}</td>
+					<td data-label="Nom">{{schedule.name}}</td>
 
 				</tr>
 			{% endfor %}

@@ -19595,28 +19595,7 @@ INSERT INTO `planning` (`id`, `date`, `employee_id`, `schedule_id`, `vehicle_id`
 (284445,	'2031-12-30',	15,	1,	NULL,	'2021-04-29 16:22:59',	'2021-04-29 16:22:59',	NULL),
 (284446,	'2031-12-31',	15,	1,	NULL,	'2021-04-29 16:22:59',	'2021-04-29 16:22:59',	NULL);
 
-DELIMITER ;;
 
-CREATE TRIGGER `planning_before_update` BEFORE UPDATE ON `planning` FOR EACH ROW
-begin 
-	DECLARE nbEmployee int ;
-        DECLARE nbPlaceVehicle int ;
-        DECLARE employeeIsAlreadyInVehiclue int ;
-
-SET nbPlaceVehicle = (SELECT nb_place FROM vehicle WHERE id= NEW.vehicle_id) ;
-SET nbEmployee = (SELECT getNbEmployeeByVehicleDay(NEW.vehicle_id, NEW.date));
-
-SET employeeIsAlreadyInVehiclue = (SELECT COUNT(*) FROM planning WHERE date = NEW.date AND employee_id = NEW.employee_id AND vehicle_id = NEW.vehicle_id );
-
-
-
-IF (employeeIsAlreadyInVehiclue = 0 && nbEmployee+1 > nbPlaceVehicle) THEN
-SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT= "Ce véhicule à atteint le maxium de personne dans ce jour.";
-END IF;
-   
-END;;
-
-DELIMITER ;
 
 DROP TABLE IF EXISTS `schedule`;
 CREATE TABLE `schedule` (
@@ -19674,6 +19653,31 @@ INSERT INTO `vehicle` (`id`, `name`, `immat`, `nb_place`, `create_at`, `last_upd
 (7,	'Ambulance Mazda Double X',	'BX-966-AP',	4,	'2021-02-28 16:48:17',	'2021-05-18 14:21:46',	NULL),
 (27,	'Ambulance Peugeot C3',	'C3-78C-A5',	8,	'2021-03-11 11:28:37',	'2021-05-03 12:53:09',	1);
 
+-- 2021-06-01 10:05:22
+
+DELIMITER ;;
+
+CREATE TRIGGER `planning_before_update` BEFORE UPDATE ON `planning` FOR EACH ROW
+begin 
+	DECLARE nbEmployee int ;
+        DECLARE nbPlaceVehicle int ;
+        DECLARE employeeIsAlreadyInVehiclue int ;
+
+SET nbPlaceVehicle = (SELECT nb_place FROM vehicle WHERE id= NEW.vehicle_id) ;
+SET nbEmployee = (SELECT getNbEmployeeByVehicleDay(NEW.vehicle_id, NEW.date));
+
+SET employeeIsAlreadyInVehiclue = (SELECT COUNT(*) FROM planning WHERE date = NEW.date AND employee_id = NEW.employee_id AND vehicle_id = NEW.vehicle_id );
+
+
+
+IF (employeeIsAlreadyInVehiclue = 0 && nbEmployee+1 > nbPlaceVehicle) THEN
+SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT= "Ce véhicule à atteint le maxium de personne dans ce jour.";
+END IF;
+   
+END;;
+
+DELIMITER ;
+
 DELIMITER ;;
 
 CREATE TRIGGER `insert_scheduleplanning` AFTER INSERT ON `employee` FOR EACH ROW
@@ -19696,6 +19700,3 @@ begin
 end;;
 
 DELIMITER ;
-
-
--- 2021-05-18 10:25:18

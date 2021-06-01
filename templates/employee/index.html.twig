@@ -4,6 +4,8 @@
 {% block stylesheets %}
    <link rel="stylesheet" href="/css/employee/index.css"> 
    <link rel="stylesheet" href="/css/employee/edit.css"> 
+   <link rel="stylesheet" href="/css/responsive-table.css"> 
+
 {% endblock %}
 
 {% block body %}
@@ -44,14 +46,14 @@
          <tbody>
          {% for employee in employees %}
             <tr data-href="{{ path('employee_edit', {'id':employee.id}) }}">
-               <td>{{ employee.name }}</td>
-               <td>{{ employee.firstname }}</td>
-               <td>{{ employee.adress }}, {{ employee.zipcode }}, {{ employee.city }} </td>
-               <td>{{ employee.phone }}</td>
-               <td>{{ employee.mobilePhone }}</td>
-               <td>{{ employee.email }}</td>
-               <td>{% if employee.internal %} Oui {% else %} Non {% endif %}</td>
-               <td>{% if employee.endDate != NULL %} CDD <small>(Du {{ employee.enterDate|date("d/m/Y")~" au "~employee.endDate|date("d/m/Y") }})</small> {% else %} CDI <small> (Du {{ employee.enterDate|date("d/m/Y")}}  au --/--/----)</small> {% endif %}</td>
+               <td data-label="Nom">{{ employee.name }}</td>
+               <td data-label="Prénom">{{ employee.firstname }}</td>
+               <td data-label="Adresse">{{ employee.adress }}, {{ employee.zipcode }}, {{ employee.city }} </td>
+               <td data-label="Téléphone">{{ employee.phone }}</td>
+               <td data-label="Téléphone mobile">{{ employee.mobilePhone }}</td>
+               <td data-label="Email">{{ employee.email }}</td>
+               <td data-label="Interne">{% if employee.internal %} Oui {% else %} Non {% endif %}</td>
+               <td data-label="Type de contrat">{% if employee.endDate != NULL %} CDD <small>(Du {{ employee.enterDate|date("d/m/Y")~" au "~employee.endDate|date("d/m/Y") }})</small> {% else %} CDI <small> (Du {{ employee.enterDate|date("d/m/Y")}}  au --/--/----)</small> {% endif %}</td>
 
             </tr>
          {% endfor %}

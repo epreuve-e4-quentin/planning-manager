@@ -3,6 +3,8 @@
 {% block title %} {{website_name}} - Planning {% endblock %}
 {% block stylesheets %}
 	<link rel="stylesheet" href="/css/planning/index.css">
+	   <link rel="stylesheet" href="/css/responsive-table.css"> 
+
 {% endblock %}
 
 {% block body %}
@@ -40,7 +42,7 @@
 					<th scope="col">Date
 						<i class="fa fa-sort"></i>
 					</th>
-					<th scope="col">Horraire
+					<th scope="col">Type Horraire
 						<i class="fa fa-sort"></i>
 					</th>
 					<th scope="col">Vehicule
@@ -52,10 +54,10 @@
 			<tbody>
 				{% for planning in plannings %}
 					<tr data-href="{{ path('planning_edit', {'id':planning.id}) }}">
-						<td>{{ planning.date|date('d/m/Y')}}</td>
-						<td>
+						<td data-label="Date">{{ planning.date|date('d/m/Y')}}</td>
+						<td data-label="Type Horraire">
 							{{planning.schedule.name}}</td>
-						<td>
+						<td data-label="Vehicule">
 							{% if planning.vehicle != NULL %}
 								{{planning.vehicle.name}}
 							{% else %}

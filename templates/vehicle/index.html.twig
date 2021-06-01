@@ -4,6 +4,8 @@
 {% block stylesheets %}
    <link rel="stylesheet" href="/css/vehicle/index.css"> 
    <link rel="stylesheet" href="/css/vehicle/edit.css"> 
+      <link rel="stylesheet" href="/css/responsive-table.css"> 
+
 {% endblock %}
 
 {% block body %}
@@ -38,9 +40,9 @@
          <tbody>
          {% for vehicle in vehicles %}
               <tr data-href="{{ path('vehicle_edit', {'id':vehicle.id}) }}">
-               <td>{{vehicle.name}}</td>
-               <td> {{vehicle.immat}}</td>
-               <td> {{vehicle.nbPlace}}</td>
+               <td data-label="Nom">{{vehicle.name}}</td>
+               <td data-label="Immatriculation"> {{vehicle.immat}}</td>
+               <td data-label="Nombre de place"> {{vehicle.nbPlace}}</td>
 
             </tr>
          {% endfor %}
